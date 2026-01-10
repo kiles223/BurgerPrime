@@ -28,6 +28,13 @@ public class Account implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author", fetch = FetchType.EAGER)
     List<Order> orders = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author", fetch = FetchType.EAGER)
+    List<Feedback> feedbacks = new ArrayList<>();
+
+    public void addFeedback(Feedback feedback) {
+        feedback.setAuthor(this);
+        feedbacks.add(feedback);
+    }
     public void addOrder(Order order) {
         order.setAuthor(this);
         orders.add(order);

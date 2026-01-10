@@ -27,11 +27,19 @@ public class Product {
     private Integer previewImageId;
     private LocalDateTime createdAt;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.EAGER)
+    List<Feedback> feedbacks = new ArrayList<>();
+
     @PrePersist
     private void init(){
         createdAt = LocalDateTime.now();
     }
 
+
+    public void addFeedbackToProduct(Feedback feedback){
+        feedback.setProduct(this);
+        feedbacks.add(feedback);
+    }
     public void addImageToProduct(Image image){
         image.setProduct(this);
         images.add(image);
