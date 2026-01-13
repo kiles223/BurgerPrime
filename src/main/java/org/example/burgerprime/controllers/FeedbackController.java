@@ -23,12 +23,12 @@ public class FeedbackController {
     @PostMapping("/feedback")
     public String createFeedback(Integer burgerID, Authentication authentication, String feedback, Integer rating) {
         Object principal = authentication.getPrincipal();
-        log.info("Текст отзыва:" + feedback);
         if (principal instanceof UserDetails) {
             String username = ((UserDetails) principal).getUsername();
             Account account = accountRepository.findByName(username);
             Product product = productRepository.getProductById(burgerID);
             if(!feedbackRepository.existsByAuthorIdAndProductId(account.getId(), product.getId())){
+                log.info("Текст отзыва:" + feedback);
                 Feedback newFeedback = new Feedback();
                 newFeedback.setText(feedback);
                 newFeedback.setRating(rating);
