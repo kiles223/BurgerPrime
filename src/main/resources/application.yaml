@@ -4,9 +4,9 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
   datasource:
-    url: jdbc:postgresql://localhost:15432/postgres
-    username: kiles
-    password: 1234
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
     hikari:
       auto-commit: false
