@@ -37,7 +37,7 @@
         <a href="http://localhost:8080/profile"><img class="h-10 absolute" src="../static/img/vk_logo.png"></a>
     </div>
 </header>
-<main class="w-full h-full pb-10 bg-zinc-200">
+<main class="w-full h-full min-h-screen pb-10 bg-zinc-200">
     <div class="grid px-auto xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-10 w-full pt-20 lg:pt-35 h-full">
         <#list products as product>
         <a href="http://localhost:8080/product/${product.id}" class="cursor-pointer">

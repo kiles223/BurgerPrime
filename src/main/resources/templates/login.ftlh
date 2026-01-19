@@ -21,7 +21,7 @@
         </style>
     </head>
     <body class="lg:bg-[url(../static/img/login_bg.png)] bg-no-repeat h-full">
-        <main class="flex justify-center items-center md:mb-40 lg:mb-27 w-full h-full mb-27">
+        <main class="flex justify-center items-center md:mb-40 lg:mb-27 w-full h-full  mb-27">
                 <div class="bg-zinc-200 w-90 md:w-150 lg:w-200 h-155 md:h-200 md:h-150 mt-5 md:mt-10 xl:w-150 mr-0.5 rounded-xl">
                     <form class="flex grid" method="post" action="/login">
                         <div class="w-full h-full flex justify-center pt-5 lg:pt-10 pb-5">
