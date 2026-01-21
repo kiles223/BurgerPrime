@@ -35,7 +35,7 @@
         </form>
     </div>
 
-    <a id="login" class="absolute right-[5%] w-10 h-10 rounded-[50%] bg-white overflow-hidden" href="http://192.168.0.101:8080/profile">
+    <a id="login" class="flex justify-center items-center absolute right-[5%] w-10 h-10 rounded-[50%] bg-white overflow-hidden" href="http://192.168.0.101:8080/profile">
         <#if account.avatarId??>
             <img id="ava" class="h-10" src="/images/${account.avatarId}" alt="">
         </#if>

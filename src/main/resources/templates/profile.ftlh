@@ -30,7 +30,7 @@
             <button class="absolute lg:w-[13%] lg:w-[10%] w-[40%] h-[50%] bg-green-300 right-0 rounded-xl border border-black text-stone-800 font-bold">Найти</button>
         </form>
     </div>
-    <div class="absolute overflow-hidden rounded-[50%] h-10 w-10 right-[5%] top-[17%] bg-white">
+    <div class="flex items-center justify-center absolute overflow-hidden rounded-[50%] h-10 w-10 right-[5%] top-[17%] bg-white">
         <a href="http://192.168.0.101:8080/profile">
             <#if account.avatarId??>
                 <img class="h-10" src="/images/${account.avatarId}" alt="">
