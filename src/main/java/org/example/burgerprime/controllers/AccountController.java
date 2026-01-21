@@ -4,22 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.burgerprime.interfaces.AccountRepository;
 import org.example.burgerprime.models.Account;
+import org.example.burgerprime.models.Image;
+import org.example.burgerprime.services.Service;
 import org.example.burgerprime.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.net.Authenticator;
+import java.io.IOException;
+
 
 @AllArgsConstructor
 @Controller
 @Slf4j
 public class AccountController {
-
+    private final Service service;
     private final UserService userService;
     private final AccountRepository accountRepository;
     @GetMapping("/login")
@@ -42,6 +46,19 @@ public class AccountController {
         userService.createUser(user);
         return "redirect:/login";
     }
+    @GetMapping("/profile")
+    public String profile( Model model, Authentication authentication) {
+        int kkal = 0;
+        Object principal = authentication.getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails) principal).getUsername();
+            Account account = accountRepository.findByName(username);
+            model.addAttribute("kkal", kkal);
+            model.addAttribute("account", account);
+        }
+        return "profile";
+    }
     @PostMapping("/profile/edit_name")
     public String editName(Authentication authentication, String new_name) {
         Object principal = authentication.getPrincipal();
@@ -50,6 +67,22 @@ public class AccountController {
         account.setName(new_name);
         accountRepository.save(account);
         log.info("User {} changed name to {}", username, new_name);
+        return "redirect:/login";
+    }
+
+    @PostMapping("/profile/edit_avatar")
+    public String editAvatar(Authentication authentication, @RequestParam("file") MultipartFile file) throws IOException {
+        Image avatar;
+        Object principal = authentication.getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+        Account account = accountRepository.findByName(username);
+        if (file.getSize() != 0) {
+            avatar = service.toImageEntity(file);
+            account.setAvatar(avatar);
+        }
+        Account accountFromDb = accountRepository.save(account);
+        accountFromDb.setAvatarId(accountFromDb.getAvatar().getId());
+        accountRepository.save(account);
         return "redirect:/login";
     }
 }

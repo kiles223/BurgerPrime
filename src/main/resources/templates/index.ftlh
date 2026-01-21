@@ -26,21 +26,22 @@
 </head>
 <body class="text-white">
 <header class="flex justify-center items-center shadow-xl bg-zinc-400 w-full h-15 fixed top-0 z-50">
-    <a href="http://localhost:8080/"><img class="h-10 absolute left-[5%] top-[17%]" src="../static/img/alt_logo.png"></a>
+
+    <a href="http://192.168.0.101:8080/"><img class="h-10 absolute left-[5%] top-[17%]" src="../static/img/alt_logo.png"></a>
     <div class="flex relative items-center lg:w-[35%] w-[50%] h-full ">
         <form class="flex items-center h-full w-full">
             <input class="w-full h-[50%] bg-white border border-black rounded-xl text-stone-800 pl-2">
             <button class="absolute lg:w-[13%] lg:w-[10%] w-[40%] h-[47%] bg-green-300 right-0 rounded-xl text-stone-800 font-bold">Найти</button>
         </form>
     </div>
-    <div class="absolute overflow-hidden rounded-[50%] h-10 w-10 right-[5%] top-[17%] bg-white">
-        <a href="http://localhost:8080/profile"><img class="h-10 absolute" src="../static/img/vk_logo.png"></a>
-    </div>
+
+    <a id="login" class="absolute right-[5%]" href="http://192.168.0.101:8080/login">Войти</a>
+
 </header>
 <main class="w-full h-full min-h-screen pb-10 bg-zinc-200">
     <div class="grid px-auto xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-10 w-full pt-20 lg:pt-35 h-full">
         <#list products as product>
-        <a href="http://localhost:8080/product/${product.id}" class="cursor-pointer">
+        <a href="http://192.168.0.101:8080/product/${product.id}" class="cursor-pointer">
             <div class="h-110 w-80 bg-zinc-400 rounded-xl mx-auto">
                 <div class="flex justify-center items-center h-55 w-full">
                     <img class="h-full" src="/images/${product.previewImageId}">

@@ -22,9 +22,10 @@ public class SecurityConfig {
 
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/","/images/**",
-                                "/registration", "/error", "/product/**",
-                                "/static/**", "/css/**", "/js/**", "/favicon.ico").permitAll()
+                        .requestMatchers(
+                                "/registration",
+                                "/static/**"
+                        ).permitAll()
                         .requestMatchers("/add/product").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
@@ -33,7 +34,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login")
                         .usernameParameter("name")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/add/product", true)
+                        .defaultSuccessUrl("/profile", true)
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )
