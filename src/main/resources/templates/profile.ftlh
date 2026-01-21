@@ -31,16 +31,22 @@
         </form>
     </div>
     <div class="absolute overflow-hidden rounded-[50%] h-10 w-10 right-[5%] top-[17%] bg-white">
-        <a href="http://192.168.0.101:8080/profile"><img class="h-10 absolute" src="/images/${account.avatarId}"></a>
+        <a href="http://192.168.0.101:8080/profile">
+            <#if account.avatarId??>
+                <img class="h-10" src="/images/${account.avatarId}" alt="">
+            </#if>
+        </a>
     </div>
 </header>
 <main class="h-full w-full min-h-screen pt-30">
     <div class="grid w-full h-[30%]">
         <div class="flex justify-center w-full h-full">
             <div class="relative">
-                <button id="form_btn" class="flex justify-center items-center z-20 absolute w-40 h-40 rounded-[50%] cursor-pointer overflow-hidden">
+                <button id="form_btn" class="flex justify-center bg-white items-center z-20 absolute w-40 h-40 rounded-[50%] cursor-pointer overflow-hidden">
                     <#if account.avatarId??>
-                        <img id="ava" class="h-full w-full" src="/images/${account.avatarId}" alt="ava">
+                        <img id="ava" class="h-full w-full" src="/images/${account.avatarId}" alt="">
+                        <#else>
+                        <img id="alt_ava" class="h-full w-full" src="../static/img/alt_logo.png" alt="">
                     </#if>
                 </button>
                 <form class="grid h-full w-40" method="post" action="/profile/edit_avatar" enctype="multipart/form-data">

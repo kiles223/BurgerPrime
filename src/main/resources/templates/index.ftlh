@@ -35,7 +35,11 @@
         </form>
     </div>
 
-    <a id="login" class="absolute right-[5%]" href="http://192.168.0.101:8080/login">Войти</a>
+    <a id="login" class="absolute right-[5%] w-10 h-10 rounded-[50%] bg-white overflow-hidden" href="http://192.168.0.101:8080/profile">
+        <#if account.avatarId??>
+            <img id="ava" class="h-10" src="/images/${account.avatarId}" alt="">
+        </#if>
+    </a>
 
 </header>
 <main class="w-full h-full min-h-screen pb-10 bg-zinc-200">
