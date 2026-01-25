@@ -61,15 +61,15 @@
                 <p>⭐⭐⭐⭐⭐ (120 отзывов)</p>
                 <p class="text-4xl font-bold text-red-500">${product.price} ₽</p>
                 <p class="">Описание: ${product.description}</p>
-                <form action="/order" method="post">
-                    <input id="currentUrl" type="hidden" name="burgerID" value="">
+                <form action="/basket/add_product" method="post">
+                    <input id="currentUrl" type="hidden" name="productId" value="">
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
                             let currentUrl = window.location.href;
-                            let burgerIndex = currentUrl.indexOf('product/')
-                            if (burgerIndex !== -1) {
-                                let burgerId = currentUrl.substring(burgerIndex + 'product/'.length);
-                                document.getElementById('currentUrl').value = parseInt(burgerId, 10);
+                            let productIndex = currentUrl.indexOf('product/')
+                            if (productIndex !== -1) {
+                                let productId = currentUrl.substring(productIndex + 'product/'.length);
+                                document.getElementById('currentUrl').value = parseInt(productId, 10);
                             }
 
                         });
@@ -79,82 +79,7 @@
                 <p>Категория: ${product.category}</p>
                 <p>Вес: ${product.weight}г</p>
             </div>
-        </div>
-        <h1 class="mt-15 text-center text-4xl">Отзывы</h1>
-        <hr class="mt-5 border-zinc-400 border-1 center w-300 ml-50">
-        <div class="w-full  mt-10">
-            <h1 class="ml-60 font-bold text-2xl">Написать отзыв:</h1>
-            <form class="mt-5 grid h-50" method="post" action="/feedback">
-                <textarea name="feedback" class="ml-60 pl-2 w-200 cursor-pointer mb-1 border rounded" rows="5" cols="50" placeholder="Введите текст отзыва.."></textarea>
-                <input type="hidden" name="rating" id="rating">
-                <input id="currentUrl2" type="hidden" name="burgerID" value="">
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        let currentUrl = window.location.href;
-                        let burgerIndex = currentUrl.indexOf('product/')
-                        if (burgerIndex !== -1) {
-                            let burgerId = currentUrl.substring(burgerIndex + 'product/'.length);
-                            document.getElementById('currentUrl2').value = parseInt(burgerId, 10);
-                        }
-
-                    });
-                </script>
-                <div class="flex ml-60 space-x-1 cursor-pointer" id="starRating">
-                    <span data-value="1" class="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-4xl cursor-pointer">&#9733;</span>
-                    <span data-value="2" class="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-4xl cursor-pointer">&#9733;</span>
-                    <span data-value="3" class="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-4xl cursor-pointer">&#9733;</span>
-                    <span data-value="4" class="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-4xl cursor-pointer">&#9733;</span>
-                    <span data-value="5" class="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-4xl cursor-pointer">&#9733;</span>
-                </div>
-
-                <script>
-                    const stars = document.querySelectorAll('#starRating span');
-                    let currentRating = 0;
-
-                    stars.forEach(star => {
-                        star.addEventListener('mouseover', () => {
-                            const val = parseInt(star.dataset.value);
-                            stars.forEach(s => {
-                                if (parseInt(s.dataset.value) <= val) {
-                                    s.classList.add('text-yellow-400');
-                                    s.classList.remove('text-gray-300');
-                                } else {
-                                    s.classList.remove('text-yellow-400');
-                                    s.classList.add('text-gray-300');
-                                }
-                            });
-                        });
-
-                        star.addEventListener('mouseout', () => {
-                            stars.forEach(s => {
-                                if (parseInt(s.dataset.value) <= currentRating) {
-                                    s.classList.add('text-yellow-400');
-                                    s.classList.remove('text-gray-300');
-                                } else {
-                                    s.classList.remove('text-yellow-400');
-                                    s.classList.add('text-gray-300');
-                                }
-                            });
-                        });
-
-                        star.addEventListener('click', () => {
-                            currentRating = parseInt(star.dataset.value);
-                            stars.forEach(s => {
-                                if (parseInt(s.dataset.value) <= currentRating) {
-                                    s.classList.add('text-yellow-400');
-                                    s.classList.remove('text-gray-300');
-                                    document.getElementById('rating').value = currentRating;
-                                } else {
-                                    s.classList.remove('text-yellow-400');
-                                    s.classList.add('text-gray-300');
-                                }
-                            });
-                        });
-                    });
-                </script>
-                <button type="submit" class="ml-60 mt-3 bg-green-300 font-bold hover:bg-green-400 cursor-pointer h-10 w-50 rounded-lg text-xl">Отправить</button>
-            </form>
-        </div>
+            </div>
     </div>
 </main>
 <footer class=" bg-zinc-400 h-115 pt-15 pb-10 text-white w-full">

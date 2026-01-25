@@ -25,6 +25,8 @@ public class Account implements UserDetails {
     private Integer avatarId;
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     private Image avatar;
+    @OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
+    private Basket basket;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "account_role", joinColumns = @JoinColumn(name = "account_id"))
     @Enumerated(EnumType.STRING)

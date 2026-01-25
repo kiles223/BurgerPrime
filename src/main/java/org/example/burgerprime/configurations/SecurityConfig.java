@@ -24,7 +24,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/registration",
-                                "/static/**"
+                                "/static/**",
+                                "/images/**"
                         ).permitAll()
                         .requestMatchers("/add/product").hasAuthority("ADMIN")
                         .anyRequest().authenticated()

@@ -28,6 +28,7 @@ fileInput.addEventListener('change', () => {
     }
 });
 close_btn.addEventListener('click', () => {
+    ava.src = "/images/${account.avatarId}";
     change_avatar_btn.style.display = 'none';
     close_btn.style.display = 'none';
     fileInput.value = '';

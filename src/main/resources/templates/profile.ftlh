@@ -45,7 +45,7 @@
                 <button id="form_btn" class="flex justify-center bg-white items-center z-20 absolute w-40 h-40 rounded-[50%] cursor-pointer overflow-hidden">
                     <#if account.avatarId??>
                         <img id="ava" class="h-full w-full" src="/images/${account.avatarId}" alt="">
-                        <#else>
+                    <#else>
                         <img id="alt_ava" class="h-full w-full" src="../static/img/alt_logo.png" alt="">
                     </#if>
                 </button>
@@ -84,18 +84,34 @@
             });
         </script>
         <div class="mt-10 space-y-5 pb-10">
-            <div class="flex justify-center w-full h-50">
-                <div class="flex items-start justify-center w-[90%] h-full bg-zinc-300 rounded-xl pt-5">
-                    <a href="">
-                        <p class="text-[120%]">Нынешний заказ</p>
-                    </a>
+            <div class="flex justify-center items-center w-full h-max-50">
+                <div class="grid bg-zinc-300 w-[90%] h-full rounded-xl pb-5 pt-5 space-y-3">
+                    <p class="text-3xl text-center">Ваш заказ</p>
+                    <#if basketProducts?? && amountProducts != 0>
+                        <#list basketProducts as product>
+                            <p class="product text-center text-xl text-white hover:underline cursor-pointer font-bold" data-id="${product.id}">
+                                ${product.name} ${product.price}₽
+                            </p>
+                        </#list>
+
+                        <p class="text-center text-2xl">Итого: ${allPrice}₽</p>
+                        <form method="post" action="">
+                            <input type="hidden" name="basketId" value="">
+                        </form>
+                        <div class="flex justify-center w-full h-10 ">
+                            <button class="flex items-center justify-center w-[80%] h-full bg-green-300 rounded-xl cursor-pointer text-[120%] text-stone-800 font-bold">Заказать</button>
+                        </div>
+                        <p class="text-center text-sm">Нажмите на товар, чтобы удалить*</p>
+                        <#else>
+                        <p class="text-xl text-center">Пока пусто</p>
+                    </#if>
                 </div>
             </div>
             <div class="flex justify-center w-full h-30">
                 <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl">
                     <div>
-                        <p class="text-[100%] text-center">Колличество сьеденных каллорий:</p>
-                        <p class="text-[200%] text-center text-red-500 font-bold">${kkal}</p>
+                        <p class="text-[100%] text-center">Колличество сегодня каллорий:</p>
+                        <p class="text-[200%] text-center text-red-500 font-bold">0</p>
                     </div>
                 </div>
             </div>
@@ -116,7 +132,7 @@
             <div class="flex justify-center w-full h-10">
                 <div class="flex items-center justify-center w-[80%] h-full bg-red-500 rounded-xl">
                     <a href="/logout">
-                        <div class="flex justify-center items-center space-x-2 ">
+                        <div class="flex justify-center items-center space-x-2 cursor-pointer">
                             <p class="text-[120%] text-stone-800 font-bold">Выйти</p>
                             <img class="h-5" src="../static/img/exit.png">
                         </div>
@@ -127,5 +143,40 @@
 
     </div>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.addEventListener('click', (event) => {
+            if (event.target.classList.contains('product')) {
+                const productId = event.target.getAttribute('data-id');
+                console.log('Клик по товару, ID:', productId);
+
+                const formData = new URLSearchParams();
+                formData.append('productId', productId);
+
+                fetch('/basket/remove_product', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData.toString(),
+                })
+                    .then(response => {
+                        console.log('Ответ сервера:', response);
+                        if (response.ok) {
+                            location.reload();
+                            event.target.remove();
+                        } else{
+                            location.reload();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Ошибка:', error);
+                    });
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
