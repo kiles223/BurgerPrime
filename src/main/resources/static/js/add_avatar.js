@@ -20,18 +20,20 @@ fileInput.addEventListener('change', () => {
         const reader = new FileReader();
 
         reader.onload = function(e) {
-            ava.src = e.target.result;
-            alt_ava.src = e.target.result;
+            if(ava === null){
+                form_btn.innerHTML = '<img src="' + e.target.result + '" class="h-full w-full">';
+            }
+            else {
+                ava.src = e.target.result;
+            }
         };
 
         reader.readAsDataURL(file);
     }
 });
 close_btn.addEventListener('click', () => {
-    ava.src = "/images/${account.avatarId}";
-    change_avatar_btn.style.display = 'none';
-    close_btn.style.display = 'none';
-    fileInput.value = '';
+    if(ava !== null){
+        ava.src = '/images/${account.avatarId}';
+    }
     location.reload();
-
 });

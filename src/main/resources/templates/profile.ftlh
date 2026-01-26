@@ -42,11 +42,9 @@
     <div class="grid w-full h-[30%]">
         <div class="flex justify-center w-full h-full">
             <div class="relative">
-                <button id="form_btn" class="flex justify-center bg-white items-center z-20 absolute w-40 h-40 rounded-[50%] cursor-pointer overflow-hidden">
+                <button id="form_btn" class="flex justify-center bg-white items-center z-20 absolute w-40 h-40 rounded-[50%] cursor-pointer overflow-hidden shadow-xl">
                     <#if account.avatarId??>
                         <img id="ava" class="h-full w-full" src="/images/${account.avatarId}" alt="">
-                    <#else>
-                        <img id="alt_ava" class="h-full w-full" src="../static/img/alt_logo.png" alt="">
                     </#if>
                 </button>
                 <form class="grid h-full w-40" method="post" action="/profile/edit_avatar" enctype="multipart/form-data">
@@ -54,10 +52,10 @@
                         <input id="getFile" class="absolute hidden h-full w-full cursor-pointer z-10" name="file" accept=".png, .jpeg .jpg" type="file">
                     </div>
                     <div class="w-full flex justify-center">
-                        <button id="change_avatar_btn" class="h-10 hidden w-30 mt-3 rounded-xl bg-green-300 cursor-pointer ml-20" type="submit">Изменить</button>
+                        <button id="change_avatar_btn" class="h-10 hidden w-30 mt-3 rounded-xl bg-green-300 cursor-pointer ml-20 shadow-xl" type="submit">Изменить</button>
                     </div>
                 </form>
-                <button id="close" style="left: -2.6rem" class="absolute hidden top-40  h-10 w-30 mt-3 rounded-xl bg-red-400 cursor-pointer" type="reset">Закрыть</button>
+                <button id="close" style="left: -2.6rem" class="absolute hidden top-40  h-10 w-30 mt-3 rounded-xl bg-red-400 cursor-pointer shadow-xl" type="reset">Закрыть</button>
             </div>
             <script src="../static/js/add_avatar.js"></script>
         </div>
@@ -67,7 +65,7 @@
         </div>
         <form id="edit_name_form" class="flex justify-center items-center hidden w-full space-x-2 mt-5" method="post" action="/profile/edit_name">
             <input name="new_name" class="w-[60%] h-7 border rounded-xl pl-2" type="text" value="${account.name}">
-            <button class=" w-[30%] h-7 bg-green-300 rounded-xl" type="submit">Сохранить</button>
+            <button class=" w-[30%] h-7 bg-green-300 rounded-xl shadow-xl" type="submit">Сохранить</button>
         </form>
         <script>
             const name = document.getElementById('name');
@@ -85,21 +83,21 @@
         </script>
         <div class="mt-10 space-y-5 pb-10">
             <div class="flex justify-center items-center w-full h-max-50">
-                <div class="grid bg-zinc-300 w-[90%] h-full rounded-xl pb-5 pt-5 space-y-3">
+                <div class="grid bg-zinc-300 w-[90%] h-full rounded-xl pb-5 pt-5 space-y-3 shadow-xl">
                     <p class="text-3xl text-center">Ваш заказ</p>
                     <#if basketProducts?? && amountProducts != 0>
                         <#list basketProducts as product>
-                            <p class="product text-center text-xl text-white hover:underline cursor-pointer font-bold" data-id="${product.id}">
+                            <p class="product text-center text-2xl text-white hover:underline cursor-pointer font-bold" data-id="${product.id}">
                                 ${product.name} ${product.price}₽
                             </p>
                         </#list>
 
-                        <p class="text-center text-2xl">Итого: ${allPrice}₽</p>
+                        <p class="text-center text-3xl">Итого: ${allPrice}₽</p>
                         <form method="post" action="">
                             <input type="hidden" name="basketId" value="">
                         </form>
                         <div class="flex justify-center w-full h-10 ">
-                            <button class="flex items-center justify-center w-[80%] h-full bg-green-300 rounded-xl cursor-pointer text-[120%] text-stone-800 font-bold">Заказать</button>
+                            <button class="flex items-center justify-center w-[80%] h-full bg-green-300 rounded-xl cursor-pointer text-[120%] text-stone-800 font-bold shadow-xl">Заказать</button>
                         </div>
                         <p class="text-center text-sm">Нажмите на товар, чтобы удалить*</p>
                         <#else>
@@ -108,7 +106,7 @@
                 </div>
             </div>
             <div class="flex justify-center w-full h-30">
-                <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl">
+                <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl shadow-xl">
                     <div>
                         <p class="text-[100%] text-center">Колличество сегодня каллорий:</p>
                         <p class="text-[200%] text-center text-red-500 font-bold">0</p>
@@ -116,21 +114,21 @@
                 </div>
             </div>
             <div class="flex justify-center w-full h-20">
-                <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl">
+                <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl shadow-xl">
                     <a href="">
                         <p class="text-[120%]">Ваши заказы</p>
                     </a>
                 </div>
             </div>
             <div class="flex justify-center w-full h-20">
-                <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl">
+                <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl shadow-xl">
                     <a href="">
                         <p class="text-[120%]">Ваши отзывы</p>
                     </a>
                 </div>
             </div>
             <div class="flex justify-center w-full h-10">
-                <div class="flex items-center justify-center w-[80%] h-full bg-red-500 rounded-xl">
+                <div class="flex items-center justify-center w-[80%] h-full bg-red-500 rounded-xl shadow-xl">
                     <a href="/logout">
                         <div class="flex justify-center items-center space-x-2 cursor-pointer">
                             <p class="text-[120%] text-stone-800 font-bold">Выйти</p>

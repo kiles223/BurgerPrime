@@ -6,20 +6,20 @@ import org.example.burgerprime.interfaces.AccountRepository;
 import org.example.burgerprime.models.Account;
 import org.example.burgerprime.models.enums.Role;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class UserService {
     private final AccountRepository accountRepository;
-
-
     public boolean createUser(Account account) {
         if(accountRepository.findByName(account.getName()) != null){
             return false;
         }
         account.setActive(true);
         account.getRoles().add(Role.USER);
+
         log.info("User created:" + account.getName());
         accountRepository.save(account);
         return true;
