@@ -8,30 +8,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "baskets")
+@Table(name = "orders")
 @Data
 @RequiredArgsConstructor
-public class Basket {
+public class Order {
     @Id
     @GeneratedValue
     private Integer id;
-    @OneToOne
-    @JoinColumn(name = "account_id")
+    @ManyToOne
     private Account account;
     @ManyToMany
     @JoinTable(
-            name = "basket_products",
-            joinColumns = @JoinColumn(name = "basket_id"),
+            name = "order_products",
+            joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private List<Product> products = new ArrayList<>();
-    public void addProductToBasket(Product product){
-        this.products.add(product);
+
+    public Integer totalPrice(){
+        int sum = 0;
+        for (Product product : products) {
+            sum += product.getPrice();
+        }
+        return sum;
     }
-    public void removeProduct(Product product) {
-        this.products.remove(product);
-    }
-    public void clearBasket(){
-        this.products.clear();
+    public void addProducts(List<Product> products){
+        this.products.addAll(products);
     }
 }

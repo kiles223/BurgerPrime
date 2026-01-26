@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -27,6 +28,8 @@ public class Account implements UserDetails {
     private Image avatar;
     @OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
     private Basket basket;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Order> orders;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "account_role", joinColumns = @JoinColumn(name = "account_id"))
     @Enumerated(EnumType.STRING)

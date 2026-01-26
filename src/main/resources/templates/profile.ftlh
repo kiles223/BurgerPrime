@@ -93,11 +93,10 @@
                         </#list>
 
                         <p class="text-center text-3xl">Итого: ${allPrice}₽</p>
-                        <form method="post" action="">
-                            <input type="hidden" name="basketId" value="">
-                        </form>
                         <div class="flex justify-center w-full h-10 ">
-                            <button class="flex items-center justify-center w-[80%] h-full bg-green-300 rounded-xl cursor-pointer text-[120%] text-stone-800 font-bold shadow-xl">Заказать</button>
+                            <form method="post" action="/order">
+                                <button class="flex items-center justify-center w-[80%] h-full bg-green-300 rounded-xl cursor-pointer text-[120%] text-stone-800 font-bold shadow-xl">Заказать</button>
+                            </form>
                         </div>
                         <p class="text-center text-sm">Нажмите на товар, чтобы удалить*</p>
                         <#else>
@@ -113,13 +112,15 @@
                     </div>
                 </div>
             </div>
-            <div class="flex justify-center w-full h-20">
-                <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl shadow-xl">
-                    <a href="">
-                        <p class="text-[120%]">Ваши заказы</p>
-                    </a>
+            <#if account.getOrders()??>
+                <div class="flex justify-center w-full h-20">
+                    <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl shadow-xl">
+                        <a href="/orders">
+                            <p class="text-[120%]">Ваши заказы</p>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </#if>
             <div class="flex justify-center w-full h-20">
                 <div class="flex items-center justify-center w-[90%] h-full bg-zinc-300 rounded-xl shadow-xl">
                     <a href="">
