@@ -1,7 +1,6 @@
 const address_btn = document.getElementById('address_btn');
 const modal = document.getElementById('modal');
 address_btn.addEventListener('click', () => {
-    alert('Открыта корзина');
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 });

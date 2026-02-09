@@ -5,16 +5,5 @@ document.querySelectorAll('.plus').forEach(btn => {
         fetch('/basket/add_product?productId=' + encodeURIComponent(productId), {
             method: 'POST'
         })
-            .then(response => {
-                if (response.ok) {
-                    alert('Товар добавлен в корзину');
-                } else {
-                    alert('Ошибка при добавлении товара');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Ошибка при добавлении товара');
-            });
     });
 });

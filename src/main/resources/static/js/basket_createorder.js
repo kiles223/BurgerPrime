@@ -26,21 +26,10 @@ function sendCart() {
                 return response.json();
             }
         })
-        .then(data => {
-            if (data) {
-                console.log('Ответ сервера:', data);
-                alert('Заказ успешно оформлен!');
-                window.location.href = '/menu';
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-            alert('Ошибка при оформлении заказа');
-        });
+
 }
 
 const order_button = document.getElementById('order_button');
 order_button.addEventListener('click', () => {
     sendCart();
-    alert("Заказ оформлен");
 });
