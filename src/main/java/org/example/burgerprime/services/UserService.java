@@ -20,7 +20,7 @@ public class UserService {
             return false;
         }
         account.setActive(true);
-        account.getRoles().add(Role.USER);
+        account.getRole().add(Role.USER);
 
         log.info("User created:" + account.getName());
         accountRepository.save(account);

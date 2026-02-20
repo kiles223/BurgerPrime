@@ -46,9 +46,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             newAccount.setActive(true);
 
             // Добавляем роль USER (предполагая, что getRoles() возвращает коллекцию)
-            Set<Role> roles = newAccount.getRoles();
+            Set<Role> roles = newAccount.getRole();
             roles.add(Role.USER);
-            newAccount.setRoles(roles); // если есть сеттер
+            newAccount.setRole(roles); // если есть сеттер
 
             // Сохраняем в базу
             accountRepository.save(newAccount);
@@ -65,7 +65,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             System.out.println("Найден существующий пользователь: " + existingUser.getName());
 
             // Получаем роль существующего пользователя
-            Set<Role> userRoles = existingUser.getRoles();
+            Set<Role> userRoles = existingUser.getRole();
             String roleString = userRoles.stream()
                     .findFirst()
                     .map(Enum::name)

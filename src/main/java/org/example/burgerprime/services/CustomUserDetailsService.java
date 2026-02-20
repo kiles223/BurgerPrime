@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
 
         log.info("User loaded successfully: {}", username);
-        log.info("User active: {}, roles: {}", account.isActive(), account.getRoles());
+        log.info("User active: {}, roles: {}", account.isActive(), account.getRole());
 
         return account;
     }

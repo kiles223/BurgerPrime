@@ -32,7 +32,7 @@ public class Account implements UserDetails {
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "account_role", joinColumns = @JoinColumn(name = "account_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> role = new HashSet<>();
     @PrePersist
     public void createInfo(){
         AccountInformation accountInformation = new AccountInformation();
@@ -50,7 +50,7 @@ public class Account implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return role;
     }
 
     @Override
