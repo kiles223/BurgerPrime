@@ -20,7 +20,11 @@ public class UserService {
             return false;
         }
         account.setActive(true);
-        account.getRole().add(Role.USER);
+        if(account.getName().equals("admin")){
+            account.getRole().add(Role.ADMIN);
+        }else{
+            account.getRole().add(Role.USER);
+        }
 
         log.info("User created:" + account.getName());
         accountRepository.save(account);

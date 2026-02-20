@@ -29,49 +29,39 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2User oauth2User = super.loadUser(userRequest);
 
-        // Получаем данные от провайдера
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         Map<String, Object> attributes = oauth2User.getAttributes();
 
-        // Извлекаем email (в зависимости от провайдера)
         String email = oauth2User.getAttribute("email");
 
-        // 1. ПРОВЕРЯЕМ, ЕСТЬ ЛИ ПОЛЬЗОВАТЕЛЬ В БАЗЕ
         Account existingUser = accountRepository.findByName(email);
 
         if (existingUser == null) {
-            // Создаем нового пользователя
             Account newAccount = new Account();
             newAccount.setName(email);
             newAccount.setActive(true);
 
-            // Добавляем роль USER (предполагая, что getRoles() возвращает коллекцию)
             Set<Role> roles = newAccount.getRole();
             roles.add(Role.USER);
-            newAccount.setRole(roles); // если есть сеттер
+            newAccount.setRole(roles);
 
-            // Сохраняем в базу
             accountRepository.save(newAccount);
             System.out.println("Создан новый пользователь: " + email);
 
-            // Возвращаем OAuth2User для нового пользователя
             return new DefaultOAuth2User(
                     Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")),
                     attributes,
                     extractNameAttributeKey(registrationId)
             );
         } else {
-            // Пользователь уже существует
             System.out.println("Найден существующий пользователь: " + existingUser.getName());
 
-            // Получаем роль существующего пользователя
             Set<Role> userRoles = existingUser.getRole();
             String roleString = userRoles.stream()
                     .findFirst()
                     .map(Enum::name)
                     .orElse("USER");
 
-            // Возвращаем OAuth2User для существующего пользователя
             return new DefaultOAuth2User(
                     Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + roleString)),
                     attributes,
