@@ -35,10 +35,6 @@ public class Account implements UserDetails {
     private Set<Role> role = new HashSet<>();
     @PrePersist
     public void createInfo(){
-        AccountInformation accountInformation = new AccountInformation();
-        accountInformation.setAccount(this);
-        accountInformation.setDisplayed_name(this.name);
-        this.account_info = accountInformation;
         Basket basket = new Basket();
         basket.setAccount(this);
         this.basket = basket;
@@ -46,7 +42,9 @@ public class Account implements UserDetails {
     public Account() {
     }
 
-
+    public String getRoleString() {
+        return role.toString();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

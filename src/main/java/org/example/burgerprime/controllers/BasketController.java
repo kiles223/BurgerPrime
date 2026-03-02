@@ -43,10 +43,13 @@ public class BasketController {
             for (Product product : basket.getProducts()) {
                 sum += product.getPrice();
             }
+            model.addAttribute("discount", accountInformation.getDiscount());
             model.addAttribute("accountInformation", accountInformation);
             model.addAttribute("products", basket.getProducts());
             model.addAttribute("sum", sum);
             return "basket";
+        }else{
+            model.addAttribute("discount", 0);
         }
         return "login";
     }

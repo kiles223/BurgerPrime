@@ -54,6 +54,8 @@ public class AccountController {
 
         newAccountInfo.setId(existingInfo.getId());
         newAccountInfo.setAccount(account);
+        newAccountInfo.setWaste(existingInfo.getWaste());
+        newAccountInfo.setDiscount(existingInfo.getDiscount());
         newAccountInfo.setAddress(existingInfo.getAddress());
 
         userService.updateIfNotEmpty(displayed_name, existingInfo.getDisplayed_name(),

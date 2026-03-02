@@ -25,11 +25,6 @@ public class AccountInformation {
     @OneToOne
     @JoinColumn(name = "account_id")
     private Account account;
-    @PrePersist
-    public void initWaste() {
-        this.waste = 0;
-        this.discount = 0;
-    }
     @PreUpdate
     public void updateDiscount() {
         this.discount = (waste != null ? waste / 1000 : 0);

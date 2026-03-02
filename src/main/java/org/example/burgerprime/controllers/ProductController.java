@@ -1,9 +1,11 @@
 package org.example.burgerprime.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.example.burgerprime.interfaces.AccountInformationRepository;
 import org.example.burgerprime.interfaces.AccountRepository;
 import org.example.burgerprime.interfaces.ProductRepository;
 import org.example.burgerprime.models.Account;
+import org.example.burgerprime.models.AccountInformation;
 import org.example.burgerprime.models.Basket;
 import org.example.burgerprime.models.Product;
 import org.example.burgerprime.services.Service;
@@ -28,7 +30,9 @@ public class ProductController {
     private final Service service;
     private final ProductRepository productRepository;
     private final AccountRepository accountRepository;
-    @GetMapping("/add/product")
+    private final AccountInformationRepository accountInformationRepository;
+
+    @GetMapping("/admin/add/product")
     public String addProduct() {
         return "add_product";
     }
@@ -44,22 +48,27 @@ public class ProductController {
         if (authentication != null) {
             String username = authentication.getName();
             Account account = accountRepository.findByName(username);
+            AccountInformation accountInformation = accountInformationRepository.findByAccount(account);
             List<Product> basketProducts = account.getBasket().getProducts();
             List<Integer> basketProductsId = new ArrayList<>();
             for (Product product : basketProducts) {
                 basketProductsId.add(product.getId());
             }
+            model.addAttribute("discount", accountInformation.getDiscount());
             model.addAttribute("basketProductsId", basketProductsId);
+        }else{
+            model.addAttribute("discount", 0);
         }
+        model.addAttribute("isAuthenticated", authentication != null && authentication.isAuthenticated());
         model.addAttribute("products", productRepository.findAll());
         return "menu";
     }
-    @PostMapping("/add/product")
+    @PostMapping("/admin/add/product")
     public String addProduct(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2,
                              @RequestParam("file3") MultipartFile file3, Product product) throws IOException {
 
         service.saveProduct(product, file1, file2, file3);
 
-        return "redirect:/add/product";
+        return "redirect:/admin/add/product";
     }
 }

@@ -33,7 +33,7 @@ public class SecurityConfig {
                                 "/static/**",
                                 "/images/**"
                         ).permitAll()
-                        .requestMatchers("/add/product").hasAuthority("ADMIN")
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(

@@ -129,16 +129,18 @@
                 </div>
                 <div id="products" class="w-full h-full mt-[32px] space-y-[32px]">
                     <#list products as product>
-                        <div data-product-cost="${product.price}" data-product-id="${product.id}" class="flex items-start product-item justify-start h-[148px] bg-[#F0E4CB] rounded-[24px] shadow-2xl px-[16px] py-[16px] pb-[16px] space-x-[16px]">
+                        <div data-product-cost="${product.price * (1-(discount?double/100.0))}" data-product-id="${product.id}" class="flex items-start product-item justify-start h-[148px] bg-[#F0E4CB] rounded-[24px] shadow-2xl px-[16px] py-[16px] pb-[16px] space-x-[16px]">
                             <img class="h-[120px]" src="/images/${product.previewImageId}" alt="">
-                            <div class="space-y-[8px]">
+                            <div class="space-y-[8px] w-full">
                                 <p style="font-family: 'MontserratAlternates-Bold';" class="text-[#D5552E] text-[19px]">${product.name}</p>
                                 <div class="flex justify-around items-center -ml-3 mt-3 space-x-[10px] w-[103px]">
                                     <img class="minus_button h-[40px]" src="../static/img/minus.png" alt="">
                                     <p class="count text-[24px] mb-1">1</p>
                                     <img class="plus_button h-[40px] mr-7" src="../static/img/plus.png" alt="">
                                 </div>
-                                <p style="font-family: 'MontserratAlternates-Bold';" class="cost text-[#1D342C] text-[19px] -mt-1">${product.price} руб.</p>
+                                <div class="flex w-full space-x-[4px]">
+                                    <p style="font-family: 'MontserratAlternates-Bold';" class="cost text-[#1D342C] text-[19px] -mt-1">${product.price * (1-(discount?double/100.0))} руб.</p>
+                                </div>
                             </div>
                         </div>
                         <#else>
@@ -146,7 +148,7 @@
                     </#list>
                     <script src="../static/js/basket_counter.js"></script>
                     <div class="flex justify-between items-center px-[16px] h-[76px] rounded-[24px] bg-[#F0E4CB] fixed bottom-[76px] w-[361px]">
-                        <p id="final_cost" style="font-family: 'MontserratAlternates-Bold';" class="text-[24px] text-[#1D342C]">${sum} руб.</p>
+                        <p id="final_cost" style="font-family: 'MontserratAlternates-Bold';" class="text-[24px] text-[#1D342C]">${sum* (1-(discount?double/100.0))} руб.</p>
                         <#if accountInformation.address??>
                             <button id="order_button" class="bg-[#1D342C] w-[126px] h-[46px] text-white rounded-[8px] text-[18px]">Заказать</button>
                             <#else>

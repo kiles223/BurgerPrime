@@ -24,9 +24,8 @@ public class IndexController {
     public final AccountInformationRepository accountInformationRepository;
     @GetMapping("/")
     public String index( Model model, Authentication authentication) {
-        boolean isAuthenticated = authentication != null && authentication.isAuthenticated();
-        model.addAttribute("isAuthenticated", isAuthenticated);
-        if(isAuthenticated) {
+        model.addAttribute("isAuthenticated", authentication != null && authentication.isAuthenticated());
+        if(authentication != null && authentication.isAuthenticated()) {
             String name = authentication.getName();
             Account account = accountRepository.findByName(name);
             AccountInformation accountInformation = accountInformationRepository.findByAccount(account);

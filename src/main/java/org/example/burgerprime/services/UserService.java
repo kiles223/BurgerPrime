@@ -2,8 +2,10 @@ package org.example.burgerprime.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.burgerprime.interfaces.AccountInformationRepository;
 import org.example.burgerprime.interfaces.AccountRepository;
 import org.example.burgerprime.models.Account;
+import org.example.burgerprime.models.AccountInformation;
 import org.example.burgerprime.models.enums.Role;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,10 +17,15 @@ import java.util.function.Consumer;
 @RequiredArgsConstructor
 public class UserService {
     private final AccountRepository accountRepository;
+    private final AccountInformationRepository accountInformationRepository;
     public boolean createUser(Account account) {
         if(accountRepository.findByName(account.getName()) != null){
             return false;
         }
+        AccountInformation accountInformation = new AccountInformation();
+        accountInformation.setAccount(account);
+        accountInformation.setDisplayed_name(account.getName());
+        accountInformation.setWaste(0);
         account.setActive(true);
         if(account.getName().equals("admin")){
             account.getRole().add(Role.ADMIN);
@@ -28,6 +35,7 @@ public class UserService {
 
         log.info("User created:" + account.getName());
         accountRepository.save(account);
+        accountInformationRepository.save(accountInformation);
         return true;
     }
     public boolean deleteUser(String name){

@@ -30,7 +30,7 @@
 </header>
 <main class="flex justify-center items-center w-full mx-auto pt-40">
     <div class="w-350 h-140">
-        <form action="/add/product" enctype="multipart/form-data" method="post" class="grid grid-cols-2 bg-neutral-700 w-350 h-130 border border-white border-b border-1 rounded-lg">
+        <form action="/admin/add/product" enctype="multipart/form-data" method="post" class="grid grid-cols-2 bg-neutral-700 w-350 h-130 border border-white border-b border-1 rounded-lg">
             <div class="flex flex-col p-4 space-y-2">
                 <p class="text-2xl text-center">ДОБАВИТЬ ПРОДУКТ</p>
                 <p class="text-xl">Название товара</p>

@@ -42,12 +42,14 @@
                         </div>
                     </div>
                     <#else>
-                    <div class="bg-[#1D342C] h-27 w-full mt-[32px] rounded-[24px] shadow-2xl">
-                        <div class="flex h-full justify-between items-center">
-                            <p class="text-white ml-[16px] text-[18px]/5.5">Авторизуйтесь для<br> получения скидки</p>
-                            <img class="mr-[16px]" src="../static/img/arrow.png">
-                        </div>
-                    </div>
+                        <a href="/login">
+                            <div class="bg-[#1D342C] h-27 w-full mt-[32px] rounded-[24px] shadow-2xl">
+                                <div class="flex h-full justify-between items-center">
+                                    <p class="text-white ml-[16px] text-[18px]/5.5">Авторизуйтесь для<br> получения скидки</p>
+                                    <img class="mr-[16px]" src="../static/img/arrow.png">
+                                </div>
+                            </div>
+                        </a>
                 </#if>
                 <div class="mt-[32px]">
                     <p style="font-family: 'MontserratAlternates-Bold'" class="text-[32px] text-[#D5552E]" style="font-family: 'Montserrat-Bold';">Акции</p>
