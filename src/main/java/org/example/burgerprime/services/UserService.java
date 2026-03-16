@@ -26,6 +26,7 @@ public class UserService {
         accountInformation.setAccount(account);
         accountInformation.setDisplayed_name(account.getName());
         accountInformation.setWaste(0);
+        accountInformation.setDiscount(0);
         account.setActive(true);
         if(account.getName().equals("admin")){
             account.getRole().add(Role.ADMIN);

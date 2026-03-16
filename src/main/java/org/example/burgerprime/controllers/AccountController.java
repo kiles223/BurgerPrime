@@ -142,9 +142,7 @@ public class AccountController {
         // Всегда добавляем что-то в модель, даже если null
         model.addAttribute("accountInformation", accountInformation);
 
-        // Для отладки - добавим информацию о типе пользователя
-        model.addAttribute("userType", principal.getClass().getSimpleName());
-        model.addAttribute("username", username);
+        model.addAttribute("account", account);
 
         return "profile";
     }

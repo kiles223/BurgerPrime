@@ -67,6 +67,14 @@
                         </div>
                     </div>
                     <div class="grid w-full mt-[16px] space-y-[16px]">
+                        <#if account.getRoleString() == "[ADMIN]">
+                            <a href="/admin/users">
+                                <div class="flex justify-between items-center px-[16px] bg-[#1D342C] w-full h-[57px] rounded-[24px] shadow-lg">
+                                    <p style="font-family: 'MontserratAlternates-Bold';" class="text-[18px] text-[#FFFFFF]">Админ панель</p>
+                                    <img src="../static/img/arrow.png" alt="">
+                                </div>
+                            </a>
+                        </#if>
                         <a href="/orders">
                             <div class="flex justify-between items-center px-[16px] bg-[#F0E4CB] w-full h-[57px] rounded-[24px] shadow-lg">
                                 <p style="font-family: 'MontserratAlternates-Bold';" class="text-[18px] text-[#D5552E]">Ваши заказы</p>

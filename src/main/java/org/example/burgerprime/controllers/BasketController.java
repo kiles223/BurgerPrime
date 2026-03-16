@@ -36,10 +36,6 @@ public class BasketController {
             Account account = accountRepository.findByName(username);
             Basket basket = basketRepository.findByAccount(account);
             AccountInformation accountInformation = accountInformationRepository.findByAccount(account);
-            if (basket == null) {
-                basket = new Basket();
-                basket.setAccount(account);
-            }
             for (Product product : basket.getProducts()) {
                 sum += product.getPrice();
             }
@@ -64,10 +60,6 @@ public class BasketController {
 
 
         Basket basket = basketRepository.findByAccount(account);
-        if (basket == null) {
-            basket = new Basket();
-            basket.setAccount(account);
-        }
 
 
         Product product = productRepository.findById(productId)

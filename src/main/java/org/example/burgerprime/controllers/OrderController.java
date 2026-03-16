@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class OrderController {
     public final ProductRepository productRepository;
     private final BasketRepository basketRepository;
     private final AccountInformationRepository accountInformationRepository;
+    private final RestTemplate restTemplate;
 
     @PostMapping("/order")
     public String order(Authentication authentication, @RequestBody Map<String, Object> orderData) {
@@ -59,7 +61,17 @@ public class OrderController {
             System.out.println("Products in order before save: " + new_order.getProducts().size());
             accountInformation.plusToWaste(new_order);
             accountInformationRepository.save(accountInformation);
-            orderRepository.save(new_order);
+            try {
+                String espResponse = restTemplate.getForObject(
+                        "http://192.168.0.148:80/ring",
+                        String.class
+                );
+                System.out.println("ESP32 ответил: " + espResponse);
+                orderRepository.save(new_order);
+            } catch (Exception e) {
+                System.err.println("ESP32 недоступен: " + e.getMessage());
+                orderRepository.save(new_order);
+            }
         }
         return "redirect:/menu";
     }

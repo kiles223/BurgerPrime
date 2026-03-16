@@ -34,7 +34,7 @@
                 <img class="" src="/static/img/alt_logo 1.png">
                 <p class="text-[20px] text-white">BurgerPrime</p>
             </div>
-            <div id="header_nav" class="flex mt-[16px] space-x-[16px] mx-[16px] overflow-auto">
+            <div id="header_nav" class="flex my-[16px] space-x-[16px] mx-[16px] overflow-auto">
                 <a href="#burgers" style="font-family: 'MontserratAlternates-Bold'; background-color: #D5552E; color: #ffffff" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Бургеры</a>
                 <a href="#drinks" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Напитки</a>
                 <a href="#snacks" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Cнеки</a>

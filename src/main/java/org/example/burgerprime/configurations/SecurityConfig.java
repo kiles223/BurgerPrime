@@ -31,7 +31,8 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/registration","/","/menu",
                                 "/static/**",
-                                "/images/**"
+                                "/images/**",
+                                "/api/**"
                         ).permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()

@@ -35,28 +35,16 @@
             <p class="text-[20px] text-white">Admin</p>
         </div>
         <div class="flex justify-center items-center mt-[24px] space-x-[64px] w-full h-15 bg-white">
-            <a href="/users" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#D5552E] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#ffffff] cursor-pointer">Пользователи</a>
-            <a style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Заказы</a>
-            <a style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Товары</a>
-            <a href="/add/product" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Добавить товар</a>
+            <a href="/admin/users" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#D5552E] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#ffffff] cursor-pointer">Пользователи</a>
+            <a href="/admin/all_orders" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Заказы</a>
+            <a href="/admin/products" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Товары</a>
+            <a href="/admin/add/product" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Добавить товар</a>
         </div>
     </header>
     <main class="w-full pt-40 px-6 pb-8">
-        <!-- Заголовок и поиск -->
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl text-[#2D2D2D]" style="font-family: 'Montserrat-Bold';">Список пользователей</h1>
 
-            <div class="flex space-x-3">
-                <div class="relative">
-                    <input type="text" placeholder="Поиск пользователя..."
-                           class="pl-10 pr-4 py-2 rounded-lg border border-[#E0D5C0] focus:outline-none focus:border-[#D5552E] focus:ring-1 focus:ring-[#D5552E] w-64"
-                           style="background-color: white; font-family: 'Montserrat-Medium';">
-                    <svg class="absolute left-3 top-2.5 h-5 w-5 text-[#9A9A9A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </div>
-
-            </div>
         </div>
 
         <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-[#E5D9C5]">
@@ -73,10 +61,9 @@
                 </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-[#F0E4CB]">
-                <!-- Строка 1 -->
                 <#list accounts as account>
                     <tr class="table-row-hover">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#4A4A4A]" style="font-family: 'Montserrat-Medium';">#001</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#4A4A4A]" style="font-family: 'Montserrat-Medium';">#${account.id}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
 
