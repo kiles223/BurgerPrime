@@ -36,13 +36,6 @@ public class ProductController {
     public String addProduct() {
         return "add_product";
     }
-    @GetMapping("/product/{id}")
-    public String productInfo(@PathVariable Integer id, Model model) {
-        Product product = productRepository.getProductById(id);
-        model.addAttribute("product", product);
-        model.addAttribute("images", product.getImages());
-        return "product_info";
-    }
     @GetMapping("/menu")
     public String products(Model model, Authentication authentication){
         if (authentication != null) {
@@ -64,10 +57,9 @@ public class ProductController {
         return "menu";
     }
     @PostMapping("/admin/add/product")
-    public String addProduct(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2,
-                             @RequestParam("file3") MultipartFile file3, Product product) throws IOException {
+    public String addProduct(@RequestParam("file") MultipartFile file, Product product) throws IOException {
 
-        service.saveProduct(product, file1, file2, file3);
+        service.saveProduct(product, file);
 
         return "redirect:/admin/add/product";
     }

@@ -71,6 +71,7 @@ public class OrderController {
             } catch (Exception e) {
                 System.err.println("ESP32 недоступен: " + e.getMessage());
                 orderRepository.save(new_order);
+                return "redirect:/menu";
             }
         }
         return "redirect:/menu";

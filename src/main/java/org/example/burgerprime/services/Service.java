@@ -15,22 +15,12 @@ public class Service {
     public final ProductRepository productRepository;
 
     @Transactional
-    public void saveProduct(Product product, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
-        Image image1;
-        Image image2;
-        Image image3;
-        if (file1.getSize() != 0) {
-            image1 = toImageEntity(file1);
-            image1.setPreview(true);
-            product.addImageToProduct(image1);
-        }
-        if (file2.getSize() != 0) {
-            image2 = toImageEntity(file2);
-            product.addImageToProduct(image2);
-        }
-        if (file3.getSize() != 0) {
-            image3 = toImageEntity(file3);
-            product.addImageToProduct(image3);
+    public void saveProduct(Product product, MultipartFile file) throws IOException {
+        Image image;
+        if (file.getSize() != 0) {
+            image = toImageEntity(file);
+            image.setPreview(true);
+            product.addImageToProduct(image);
         }
         Product productFromDb = productRepository.save(product);
         productFromDb.setPreviewImageId(productFromDb.getImages().get(0).getId());
