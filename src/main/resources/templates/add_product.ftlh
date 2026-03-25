@@ -47,7 +47,7 @@
 <header class="fixed h-30 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl z-10">
     <div class="flex justify-center items-center w-full h-15">
         <img class="" src="/static/img/alt_logo 1.png">
-        <p class="text-[20px] text-white">Admin</p>
+        <p class="text-[20px] text-white"><a href="/">Admin</a></p>
     </div>
     <div class="flex justify-center items-center mt-[24px] space-x-[64px] w-full h-15 bg-white">
         <a href="/admin/users" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Пользователи</a>
@@ -65,8 +65,6 @@
 
         <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-[#E5D9C5] p-8">
             <form method="post" action="/admin/add/product" enctype="multipart/form-data" class="space-y-6">
-
-                <!-- Название товара -->
                 <div>
                     <label for="name" class="block text-sm font-semibold text-[#2D2D2D] mb-2 uppercase tracking-wider" style="font-family: 'MontserratAlternates-Bold';">Название товара</label>
                     <input type="text" id="name" name="name" required
@@ -74,7 +72,6 @@
                            style="font-family: 'Montserrat-Medium';">
                 </div>
 
-                <!-- Категория -->
                 <div>
                     <label for="category" class="block text-sm font-semibold text-[#2D2D2D] mb-2 uppercase tracking-wider" style="font-family: 'MontserratAlternates-Bold';">Категория</label>
                     <select id="category" name="category" required
@@ -88,7 +85,6 @@
                     </select>
                 </div>
 
-                <!-- Цена -->
                 <div>
                     <label for="price" class="block text-sm font-semibold text-[#2D2D2D] mb-2 uppercase tracking-wider" style="font-family: 'MontserratAlternates-Bold';">Цена (₽)</label>
                     <input type="number" id="price" name="price" step="0.01" min="0" required
@@ -96,7 +92,6 @@
                            style="font-family: 'Montserrat-Medium';">
                 </div>
 
-                <!-- Загрузка картинки -->
                 <div>
                     <label class="block text-sm font-semibold text-[#2D2D2D] mb-2 uppercase tracking-wider" style="font-family: 'MontserratAlternates-Bold';">Изображение товара</label>
                     <div class="flex items-center justify-center w-full">
@@ -113,14 +108,12 @@
                             <input type="file" id="file1" name="file" accept="image/png, image/jpeg, image/jpg" class="hidden" required>
                         </label>
                     </div>
-                    <!-- Превью загруженного изображения -->
                     <div id="image-preview" class="mt-4 hidden">
                         <img id="preview-img" src="" alt="Превью" class="max-h-32 rounded-lg border border-[#E5D9C5]">
                         <p id="file-info" class="mt-2 text-sm text-[#4A4A4A]" style="font-family: 'Montserrat-Medium';"></p>
                     </div>
                 </div>
 
-                <!-- Кнопки действий -->
                 <div class="flex justify-end space-x-4 pt-4">
                     <a href="/admin/products" class="px-6 py-3 bg-[#F0E4CB] text-[#D5552E] rounded-lg font-semibold hover:bg-[#e5d5b8] transition-colors" style="font-family: 'MontserratAlternates-Bold';">Отмена</a>
                     <button type="submit" class="px-6 py-3 bg-[#D5552E] text-white rounded-lg font-semibold hover:bg-[#b34425] transition-colors" style="font-family: 'MontserratAlternates-Bold';">Добавить товар</button>

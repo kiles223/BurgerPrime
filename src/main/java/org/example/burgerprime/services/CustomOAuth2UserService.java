@@ -1,7 +1,9 @@
 package org.example.burgerprime.services;
 
+import org.example.burgerprime.interfaces.AccountInformationRepository;
 import org.example.burgerprime.interfaces.AccountRepository;
 import org.example.burgerprime.models.Account;
+import org.example.burgerprime.models.AccountInformation;
 import org.example.burgerprime.models.enums.Role;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -20,9 +22,11 @@ import java.util.Set;
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     private final AccountRepository accountRepository;
+    private final AccountInformationRepository accountInformationRepository;
 
-    public CustomOAuth2UserService(AccountRepository accountRepository) {
+    public CustomOAuth2UserService(AccountRepository accountRepository, AccountInformationRepository accountInformationRepository) {
         this.accountRepository = accountRepository;
+        this.accountInformationRepository = accountInformationRepository;
     }
 
     @Override
@@ -40,12 +44,18 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             Account newAccount = new Account();
             newAccount.setName(email);
             newAccount.setActive(true);
-
+            AccountInformation accountInformation = new AccountInformation();
+            accountInformation.setDisplayed_name(email);
+            accountInformation.setDiscount(0);
+            accountInformation.setWaste(0);
+            accountInformation.setEmail(email);
             Set<Role> roles = newAccount.getRole();
             roles.add(Role.USER);
             newAccount.setRole(roles);
 
             accountRepository.save(newAccount);
+            accountInformation.setAccount(newAccount);
+            accountInformationRepository.save(accountInformation);
             System.out.println("Создан новый пользователь: " + email);
 
             return new DefaultOAuth2User(

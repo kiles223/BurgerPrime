@@ -32,7 +32,7 @@
         <header class="w-full h-[132px] bg-[#FFF9EE] fixed">
             <div class="flex justify-center items-center h-15 bg-[#D5552E] space-x-1 rounded-b-[24px]">
                 <img class="" src="/static/img/alt_logo 1.png">
-                <p class="text-[20px] text-white">BurgerPrime</p>
+                <p class="text-[20px] text-white"><a href="/">BurgerPrime</a></p>
             </div>
             <div id="header_nav" class="flex my-[16px] space-x-[16px] mx-[16px] overflow-auto">
                 <a href="#burgers" style="font-family: 'MontserratAlternates-Bold'; background-color: #D5552E; color: #ffffff" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Бургеры</a>
@@ -54,16 +54,16 @@
                                 <div class="flex justify-center space-x-[50px] pb-[16px]">
                                     <#if isAuthenticated && discount != 0>
                                          <div class="flex space-x-[8px]">
-                                             <s style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price}</s>
-                                             <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price * (1-(discount?double/100.0))} руб.</p>
+                                             <s style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price?int}</s>
+                                             <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${(product.price * (1-(discount?double/100.0)))?int} руб.</p>
                                         </div>
                                         <#else>
-                                        <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price} руб.</p>
+                                        <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price?int} руб.</p>
                                     </#if>
                                     <#if basketProductsId?has_content && basketProductsId?seq_contains(product.id)>
-                                        <img src="../static/img/ready.png">
+                                        <img src="../static/img/ready.png ">
                                         <#else>
-                                        <button class="plus" data-product-id="${product.id}"><img src="../static/img/plus.png" alt=""></button>
+                                        <button class="plus cursor-pointer" data-product-id="${product.id}"><img src="../static/img/plus.png" alt=""></button>
                                     </#if>
                                 </div>
                             </div>
@@ -81,17 +81,17 @@
                         <div class="flex justify-center space-x-[50px] pb-[16px]">
                             <#if isAuthenticated && discount != 0>
                             <div class="flex space-x-[8px]">
-                                <s style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price}</s>
-                                <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price * (1-(discount?double/100.0))} руб.</p>
+                                <s style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price?int}</s>
+                                <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${(product.price * (1-(discount?double/100.0)))?int} руб.</p>
                             </div>
                             <#else>
-                            <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price} руб.</p>
+                            <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price?int} руб.</p>
                         </#if>
-                        <#if basketProductsId?has_content && basketProductsId?seq_contains(product.id)>
-                        <img src="../static/img/ready.png">
+                        <#if basketProductsId?has_content && basketProductsId?seq_contains(product.id) && isAuthenticated>
+                            <img src="../static/img/ready.png">
                         <#else>
-                        <button class="plus" data-product-id="${product.id}"><img src="../static/img/plus.png" alt=""></button>
-                    </#if>
+                            <button class="plus cursor-pointer" data-product-id="${product.id}"><img src="../static/img/plus.png" alt=""></button>
+                        </#if>
                 </div>
     </div>
                         </#if>
@@ -107,16 +107,16 @@
                         <div class="flex justify-center space-x-[50px] pb-[16px]">
                             <#if isAuthenticated && discount != 0>
                             <div class="flex space-x-[8px]">
-                                <s style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price}</s>
-                                <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price * (1-(discount?double/100.0))} руб.</p>
+                                <s style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price?int}</s>
+                                <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${(product.price * (1-(discount?double/100.0)))?int} руб.</p>
                             </div>
                             <#else>
-                            <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price} руб.</p>
+                            <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price?int} руб.</p>
                         </#if>
                         <#if basketProductsId?has_content && basketProductsId?seq_contains(product.id)>
                         <img src="../static/img/ready.png">
                         <#else>
-                        <button class="plus" data-product-id="${product.id}"><img src="../static/img/plus.png" alt=""></button>
+                        <button class="plus cursor-pointer" data-product-id="${product.id}"><img src="../static/img/plus.png" alt=""></button>
                     </#if>
                 </div>
 </div>
@@ -133,16 +133,16 @@
                         <div class="flex justify-center space-x-[50px] pb-[16px]">
                             <#if isAuthenticated && discount != 0>
                             <div class="flex space-x-[8px]">
-                                <s style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price}</s>
-                                <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price * (1-(discount?double/100.0))} руб.</p>
+                                <s style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price?int}</s>
+                                <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${(product.price * (1-(discount?double/100.0)))?int} руб.</p>
                             </div>
                             <#else>
-                            <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price} руб.</p>
+                            <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#1D342C]">${product.price?int} руб.</p>
                         </#if>
                         <#if basketProductsId?has_content && basketProductsId?seq_contains(product.id)>
                         <img src="../static/img/ready.png">
                         <#else>
-                        <button class="plus" data-product-id="${product.id}"><img src="../static/img/plus.png" alt=""></button>
+                        <button class="plus cursor-pointer" data-product-id="${product.id}"><img src="../static/img/plus.png" alt=""></button>
                     </#if>
                 </div>
 </div>
@@ -157,6 +157,8 @@
             <a href="/basket"><img src="/static/img/basket.png" alt=""></a>
             <a href="/profile"><img src="/static/img/profile.png" alt=""></a>
         </div>
-        <script src="../static/js/menu_addtobasket.js"></script>
+        <#if isAuthenticated>
+            <script src="../static/js/menu_addtobasket.js"></script>
+        </#if>
     </body>
 </html>

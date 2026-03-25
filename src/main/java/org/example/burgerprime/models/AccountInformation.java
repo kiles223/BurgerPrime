@@ -19,7 +19,8 @@ public class AccountInformation {
     private String date_of_birth;
     private Integer waste;
     private Integer discount;
-    @OneToOne
+    private Integer ava_id;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "avatar_id")
     private Image avatar;
     @OneToOne

@@ -112,7 +112,7 @@
     <body>
         <header class="flex fixed justify-center items-center h-15 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
             <img class="" src="/static/img/alt_logo 1.png">
-            <p class="text-[20px] text-white">BurgerPrime</p>
+            <p class="text-[20px] text-white"><a href="/">BurgerPrime</a></p>
         </header>
         <main class="flex justify-center bg-[#FFF9EE] h-full min-h-screen w-full pt-15 pb-45">
             <div class="w-[361px] h-full">
@@ -129,7 +129,7 @@
                 </div>
                 <div id="products" class="w-full h-full mt-[32px] space-y-[32px]">
                     <#list products as product>
-                        <div data-product-cost="${product.price * (1-(discount?double/100.0))}" data-product-id="${product.id}" class="flex items-start product-item justify-start h-[148px] bg-[#F0E4CB] rounded-[24px] shadow-2xl px-[16px] py-[16px] pb-[16px] space-x-[16px]">
+                        <div data-product-cost="${(product.price * (1-(discount?double/100.0)))?int}" data-product-id="${product.id}" class="flex items-start product-item justify-start h-[148px] bg-[#F0E4CB] rounded-[24px] shadow-2xl px-[16px] py-[16px] pb-[16px] space-x-[16px]">
                             <img class="h-[120px]" src="/images/${product.previewImageId}" alt="">
                             <div class="space-y-[8px] w-full">
                                 <p style="font-family: 'MontserratAlternates-Bold';" class="text-[#D5552E] text-[19px]">${product.name}</p>
@@ -139,7 +139,7 @@
                                     <img class="plus_button h-[40px] mr-7" src="../static/img/plus.png" alt="">
                                 </div>
                                 <div class="flex w-full space-x-[4px]">
-                                    <p style="font-family: 'MontserratAlternates-Bold';" class="cost text-[#1D342C] text-[19px] -mt-1">${product.price * (1-(discount?double/100.0))} руб.</p>
+                                    <p style="font-family: 'MontserratAlternates-Bold';" class="cost text-[#1D342C] text-[19px] -mt-1">${(product.price * (1-(discount?double/100.0)))?int} руб.</p>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                     </#list>
                     <script src="../static/js/basket_counter.js"></script>
                     <div class="flex justify-between items-center px-[16px] h-[76px] rounded-[24px] bg-[#F0E4CB] fixed bottom-[76px] w-[361px]">
-                        <p id="final_cost" style="font-family: 'MontserratAlternates-Bold';" class="text-[24px] text-[#1D342C]">${sum* (1-(discount?double/100.0))} руб.</p>
+                        <p id="final_cost" style="font-family: 'MontserratAlternates-Bold';" class="text-[24px] text-[#1D342C]">${(sum* (1-(discount?double/100.0)))?int} руб.</p>
                         <#if accountInformation.address??>
                             <button id="order_button" class="bg-[#1D342C] w-[126px] h-[46px] text-white rounded-[8px] text-[18px]">Заказать</button>
                             <#else>

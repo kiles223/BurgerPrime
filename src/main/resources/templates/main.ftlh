@@ -31,7 +31,7 @@
     <body>
         <header class="flex fixed justify-center items-center h-15 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
             <img class="" src="/static/img/alt_logo 1.png">
-            <p class="text-[20px] text-white">BurgerPrime</p>
+            <p class="text-[20px] text-white"><a href="/">BurgerPrime</a></p>
         </header>
         <main class="flex justify-center bg-[#FFF9EE] h-screen w-full pt-15">
             <div class="w-[369px]">

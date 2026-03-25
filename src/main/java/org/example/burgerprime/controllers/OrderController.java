@@ -61,18 +61,7 @@ public class OrderController {
             System.out.println("Products in order before save: " + new_order.getProducts().size());
             accountInformation.plusToWaste(new_order);
             accountInformationRepository.save(accountInformation);
-            try {
-                String espResponse = restTemplate.getForObject(
-                        "http://192.168.0.148:80/ring",
-                        String.class
-                );
-                System.out.println("ESP32 ответил: " + espResponse);
-                orderRepository.save(new_order);
-            } catch (Exception e) {
-                System.err.println("ESP32 недоступен: " + e.getMessage());
-                orderRepository.save(new_order);
-                return "redirect:/menu";
-            }
+            orderRepository.save(new_order);
         }
         return "redirect:/menu";
     }

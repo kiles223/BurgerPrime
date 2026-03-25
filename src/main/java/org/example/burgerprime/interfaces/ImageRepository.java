@@ -4,5 +4,6 @@ import org.example.burgerprime.models.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ImageRepository extends JpaRepository<Image, Integer> {
-
+    Image findImageById(Integer id);
+    void deleteImageById(Integer id);
 }

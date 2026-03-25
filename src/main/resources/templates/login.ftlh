@@ -35,7 +35,7 @@
     <body>
         <header class="flex fixed justify-center items-center h-15 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
             <img class="" src="/static/img/alt_logo 1.png">
-            <p class="text-[20px] text-white">BurgerPrime</p>
+            <p class="text-[20px] text-white"><a href="/">BurgerPrime</a></p>
         </header>
         <main class="flex justify-center bg-[#FFF9EE] h-full min-h-screen w-full pt-15 pb-45">
             <div class="w-[361px] h-full">
@@ -43,9 +43,9 @@
                     <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#D5552E] text-center">Вход</p>
                     <div class="bg-[#F0E4CB] w-full h-full mt-[16px] rounded-[24px] shadow-2xl py-[32px]">
                         <form method="POST" action="/login" class="w-full space-y-[16px] px-[42px]">
-                            <input name="name" style="font-family: 'Montserrat-Medium';" class="bg-white w-full h-[38px] rounded-[8px] shadow-2xl text-[18px] px-[16px]" type="text" name="" id="" placeholder="Введите имя" required>
-                            <input name="password" id="password_input" style="font-family: 'Montserrat-Medium';" class="bg-white w-full h-[38px] rounded-[8px] shadow-2xl text-[18px] px-[16px]" type="password" name="" id="" placeholder="Введите пароль" required>
-                            <button class="bg-[#1D342C] h-[38px] w-full rounded-[8px] shadow-2xl text-white text-[18px]">Войти</button>       
+                            <input name="name" style="font-family: 'Montserrat-Medium';" class="bg-white w-full h-[38px] rounded-[8px] shadow-2xl text-[18px] px-[16px] cursor-pointer" type="text" name="" id="" placeholder="Введите имя" required>
+                            <input name="password" id="password_input" style="font-family: 'Montserrat-Medium';" class="bg-white w-full h-[38px] rounded-[8px] shadow-2xl text-[18px] px-[16px] cursor-pointer" type="password" name="" id="" placeholder="Введите пароль" required>
+                            <button class="bg-[#1D342C] h-[38px] w-full rounded-[8px] shadow-2xl text-white text-[18px] cursor-pointer">Войти</button>
                         </form>
                         <div class="w-full space-y-[16px]"></div>
                             <p style="font-family: 'Montserrat-Bold';" class="text-[#D5552E] text-center text-[18px] mt-[16px]">или</p>

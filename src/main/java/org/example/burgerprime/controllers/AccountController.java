@@ -27,6 +27,7 @@ import java.util.function.Consumer;
 @Slf4j
 public class AccountController {
     private final UserService userService;
+    private final Service service;
     private final AccountRepository accountRepository;
     private final AccountInformationRepository accountInformationRepository;
     @GetMapping("/profile/datas")
@@ -166,19 +167,10 @@ public class AccountController {
         return "redirect:/basket";
     }
 
-//    @PostMapping("/profile/edit_avatar")
-//    public String editAvatar(Authentication authentication, @RequestParam("file") MultipartFile file) throws IOException {
-//        Image avatar;
-//        Object principal = authentication.getPrincipal();
-//        String username = ((UserDetails) principal).getUsername();
-//        Account account = accountRepository.findByName(username);
-//        if (file.getSize() != 0) {
-//            avatar = service.toImageEntity(file);
-//            account.setAvatar(avatar);
-//        }
-//        Account accountFromDb = accountRepository.save(account);
-//        accountFromDb.setAvatarId(accountFromDb.getAvatar().getId());
-//        accountRepository.save(account);
-//        return "redirect:/login";
-//    }
+    @PostMapping("/profile/edit_avatar")
+    public String editAvatar(Authentication authentication, @RequestParam("file") MultipartFile file) throws IOException {
+        Account account = accountRepository.findByName(authentication.getName());
+        service.saveAvatar(account, file);
+        return "redirect:/profile";
+    }
 }

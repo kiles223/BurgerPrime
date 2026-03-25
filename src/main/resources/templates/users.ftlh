@@ -32,7 +32,7 @@
     <header class=" fixed h-30 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
         <div class="flex justify-center items-center w-full h-15">
             <img class="" src="/static/img/alt_logo 1.png">
-            <p class="text-[20px] text-white">Admin</p>
+            <p class="text-[20px] text-white"><a href="/">Admin</a></p>
         </div>
         <div class="flex justify-center items-center mt-[24px] space-x-[64px] w-full h-15 bg-white">
             <a href="/admin/users" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#D5552E] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#ffffff] cursor-pointer">Пользователи</a>

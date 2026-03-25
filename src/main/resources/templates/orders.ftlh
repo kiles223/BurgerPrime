@@ -32,7 +32,7 @@
         <header class="flex fixed justify-center items-center h-15 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
             <a href="/profile"><img class="absolute top-[17px] left-[16px]" src="../static/img/reversed_arrow.png" alt=""></a>
             <img class="" src="/static/img/alt_logo 1.png">
-            <p class="text-[20px] text-white">BurgerPrime</p>
+            <p class="text-[20px] text-white"><a href="/">BurgerPrime</a></p>
         </header>
         <main class="flex justify-center bg-[#FFF9EE] h-full min-h-screen w-full pt-15 pb-45">
             <div class="w-[361px] h-full">
@@ -57,7 +57,7 @@
                                 <#list order.getProducts() as product>
                                     <div class="w-full flex justify-between">
                                         <p style="font-family: 'Montserrat-Medium';" class="text-[18px]">${product.name}</p>
-                                        <p style="font-family: 'Montserrat-Medium';" class="text-[18px] text-[#D5552E]">${product.quantity} x ${product.price} руб.</p>
+                                        <p style="font-family: 'Montserrat-Medium';" class="text-[18px] text-[#D5552E]">${product.quantity} x ${product.price?int} руб.</p>
                                     </div>
                                 </#list>
                             </div>

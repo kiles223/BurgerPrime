@@ -35,16 +35,27 @@
     <body>
         <header class="flex fixed justify-center items-center h-15 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
             <img class="" src="/static/img/alt_logo 1.png">
-            <p class="text-[20px] text-white">BurgerPrime</p>
+            <p class="text-[20px] text-white"><a href="/">BurgerPrime</a></p>
         </header>
         <main class="flex justify-center bg-[#FFF9EE] h-full min-h-screen w-full pt-15 pb-45">
             <div class="w-[361px] h-full">
                 <div class="w-full">
                     <div class="flex justify-center w-full">
-                        <div class="flex justify-center items-center mt-[64px] bg-grey-300 h-[130px] w-[130px] border border-[#1D342C] rounded-[50%] overflow-hidden">
-                            <img src="../static/img/burger.png">
+                        <div class="flex justify-center items-center mt-[64px] bg-grey-300 h-[130px] w-[130px] rounded-[50%] overflow-hidden">
+                            <#if accountInformation.avatar??>
+                                <button class="bg-white flex justify-center items-center cursor-pointer overflow-hidden h-full w-full" id="add-avatar"><img class="" src="/images/${accountInformation.avatar.id}"></button>
+                            <#else>
+                                <button class="bg-white justify-center items-center cursor-pointer overflow-hidden h-full w-full" id="add-avatar"></button>
+                            </#if>
                         </div>
                     </div>
+                    <div id="avatar-form" class="flex justify-center items-center mt-[16px] hidden w-full">
+                        <form enctype="multipart/form-data" action="/profile/edit_avatar" method="post">
+                            <input id="avatar-input" accept="image/png, image/jpeg, image/jpg" class="hidden" type="file" name="file">
+                            <button class="bg-[#1D342C] w-[126px] h-[46px] text-white rounded-[8px] text-[18px] ml-[117px] cursor-pointer">Сохранить</button>
+                        </form>
+                    </div>
+                    <script src="../static/js/add_avatar.js"></script>
                     <p style="font-family: 'MontserratAlternates-Bold';" class="text-center text-[20px] mt-[16px] text-[#D5552E]">${accountInformation.displayed_name}</p>
                     <div class="w-full flex justify-center">
                         <div class="w-[300px] flex justify-between mt-[16px] space-x-[16px]">
