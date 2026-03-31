@@ -2,6 +2,8 @@ package org.example.burgerprime.interfaces;
 
 import org.example.burgerprime.models.Account;
 import org.example.burgerprime.models.Order;
+import org.example.burgerprime.models.OrderProduct;
+import org.example.burgerprime.models.Product;
 import org.jspecify.annotations.Nullable;
 import org.springframework.data.jpa.repository.JpaRepository;
 

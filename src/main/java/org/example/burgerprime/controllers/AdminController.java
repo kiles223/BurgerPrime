@@ -1,12 +1,10 @@
 package org.example.burgerprime.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.burgerprime.interfaces.AccountRepository;
-import org.example.burgerprime.interfaces.BasketRepository;
-import org.example.burgerprime.interfaces.OrderRepository;
-import org.example.burgerprime.interfaces.ProductRepository;
+import org.example.burgerprime.interfaces.*;
 import org.example.burgerprime.models.Account;
 import org.example.burgerprime.models.Order;
+import org.example.burgerprime.models.OrderProduct;
 import org.example.burgerprime.models.Product;
 import org.example.burgerprime.models.enums.Role;
 import org.springframework.stereotype.Controller;
@@ -22,6 +20,7 @@ public class AdminController {
     private final AccountRepository accountRepository;
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
+    private final OrderProductRepository orderProductRepository;
     @GetMapping("/admin/users")
     public String users(Model model) {
         List<Account> accounts = accountRepository.findAll();
@@ -68,7 +67,12 @@ public class AdminController {
     }
     @GetMapping("/admin/delete_product/{id}")
     public String deleteProduct(@PathVariable Integer id) {
-        productRepository.deleteById(id);
+        Product product = productRepository.getProductById(id);
+        List<OrderProduct> orderProducts = orderProductRepository.findAllByProduct(product);
+        for(OrderProduct orderProduct : orderProducts){
+            orderProductRepository.deleteById(orderProduct.getId());
+        }
+        productRepository.deleteById(product.getId());
         return "redirect:/admin/products";
     }
 }
