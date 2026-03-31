@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Профиль</title>
-        <link rel="icon" href="/static/img/alt_logo 1.png">
+        <link rel="icon" href="static/img/alt_logo 1.png">
+        <base href="${springMacroRequestContext.contextPath}/">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <style>
@@ -35,7 +36,7 @@
     <body>
         <header class="flex fixed justify-center items-center h-15 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
             <img class="" src="/static/img/alt_logo 1.png">
-            <p class="text-[20px] text-white"><a href="/">BurgerPrime</a></p>
+            <p class="text-[20px] text-white"><a href="">BurgerPrime</a></p>
         </header>
         <main class="flex justify-center bg-[#FFF9EE] h-full min-h-screen w-full pt-15 pb-45">
             <div class="w-[361px] h-full">
@@ -50,7 +51,7 @@
                         </div>
                     </div>
                     <div id="avatar-form" class="flex justify-center items-center mt-[16px] hidden w-full">
-                        <form enctype="multipart/form-data" action="/profile/edit_avatar" method="post">
+                        <form enctype="multipart/form-data" action="profile/edit_avatar" method="post">
                             <input id="avatar-input" accept="image/png, image/jpeg, image/jpg" class="hidden" type="file" name="file">
                             <button class="bg-[#1D342C] w-[126px] h-[46px] text-white rounded-[8px] text-[18px] ml-[117px] cursor-pointer">Сохранить</button>
                         </form>
@@ -59,7 +60,7 @@
                     <p style="font-family: 'MontserratAlternates-Bold';" class="text-center text-[20px] mt-[16px] text-[#D5552E]">${accountInformation.displayed_name}</p>
                     <div class="w-full flex justify-center">
                         <div class="w-[300px] flex justify-between mt-[16px] space-x-[16px]">
-                            <a href="/profile/datas">
+                            <a href="profile/datas">
                                 <div>
                                     <div class="w-full flex justify-center mb-[8px]">
                                         <img src="../static/img/datas.png" alt="">
@@ -67,7 +68,7 @@
                                     <p class="text-[18px]" style="font-family: 'MontserratAlternates-SemiBold';">Ваши данные</p>
                                 </div>
                             </a>
-                            <a href="/profile/settings">
+                            <a href="profile/settings">
                                 <div>
                                     <div class="w-full flex justify-center mb-[8px]">
                                         <img src="../static/img/settings.png" alt="">
@@ -79,14 +80,14 @@
                     </div>
                     <div class="grid w-full mt-[16px] space-y-[16px]">
                         <#if account.getRoleString() == "[ADMIN]">
-                            <a href="/admin/users">
+                            <a href="admin/users">
                                 <div class="flex justify-between items-center px-[16px] bg-[#1D342C] w-full h-[57px] rounded-[24px] shadow-lg">
                                     <p style="font-family: 'MontserratAlternates-Bold';" class="text-[18px] text-[#FFFFFF]">Админ панель</p>
                                     <img src="../static/img/arrow.png" alt="">
                                 </div>
                             </a>
                         </#if>
-                        <a href="/orders">
+                        <a href="orders">
                             <div class="flex justify-between items-center px-[16px] bg-[#F0E4CB] w-full h-[57px] rounded-[24px] shadow-lg">
                                 <p style="font-family: 'MontserratAlternates-Bold';" class="text-[18px] text-[#D5552E]">Ваши заказы</p>
                                 <img src="../static/img/alt_arrow.png" alt="">
@@ -98,7 +99,7 @@
                                 <img src="../static/img/alt_arrow.png" alt="">
                             </div>
                         </a>
-                        <a href="/feedback">
+                        <a href="feedback">
                             <div class="flex justify-between items-center px-[16px] bg-[#F0E4CB] w-full h-[57px] rounded-[24px] shadow-lg">
                                 <p style="font-family: 'MontserratAlternates-Bold';" class="text-[18px] text-[#D5552E]">Оценить сайт</p>
                                 <img src="../static/img/alt_arrow.png" alt="">
@@ -109,10 +110,10 @@
             </div>
         </main>
         <div class="flex justify-around items-center w-full h-15 bg-[#F0E4CB] fixed bottom-0 rounded-t-[16px] shadow-xl">
-            <a href="/"><img src="/static/img/main.png" alt=""></a>
-            <a href="/menu"><img src="/static/img/menu.png" alt=""></a>
-            <a href="/basket"><img src="/static/img/basket.png" alt=""></a>
-            <a href="/profile"><img src="/static/img/profile_active.png" alt=""></a>
+            <a href=""><img src="/static/img/main.png" alt=""></a>
+            <a href="menu"><img src="/static/img/menu.png" alt=""></a>
+            <a href="basket"><img src="/static/img/basket.png" alt=""></a>
+            <a href="profile"><img src="/static/img/profile_active.png" alt=""></a>
         </div>
     </body>
 </html>

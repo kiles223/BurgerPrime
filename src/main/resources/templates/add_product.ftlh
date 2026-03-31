@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавление товара</title>
-    <link rel="icon" href="/static/img/alt_logo 1.png">
+    <base href="${springMacroRequestContext.contextPath}/">
+    <link rel="icon" href="static/img/alt_logo 1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
@@ -47,13 +48,13 @@
 <header class="fixed h-30 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl z-10">
     <div class="flex justify-center items-center w-full h-15">
         <img class="" src="/static/img/alt_logo 1.png">
-        <p class="text-[20px] text-white"><a href="/">Admin</a></p>
+        <p class="text-[20px] text-white"><a href="">Admin</a></p>
     </div>
     <div class="flex justify-center items-center mt-[24px] space-x-[64px] w-full h-15 bg-white">
-        <a href="/admin/users" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Пользователи</a>
-        <a href="/admin/all_orders" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Заказы</a>
-        <a href="/admin/products" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Товары</a>
-        <a href="/admin/add/product" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#D5552E] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-white cursor-pointer">Добавить товар</a>
+        <a href="admin/users" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Пользователи</a>
+        <a href="admin/all_orders" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Заказы</a>
+        <a href="admin/products" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-[#D5552E] cursor-pointer">Товары</a>
+        <a href="admin/add/product" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#D5552E] text-[18px] shadow-lg w-[180px] text-center py-[4px] rounded-[4px] text-white cursor-pointer">Добавить товар</a>
     </div>
 </header>
 
@@ -64,7 +65,7 @@
         </div>
 
         <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-[#E5D9C5] p-8">
-            <form method="post" action="/admin/add/product" enctype="multipart/form-data" class="space-y-6">
+            <form method="post" action="admin/add/product" enctype="multipart/form-data" class="space-y-6">
                 <div>
                     <label for="name" class="block text-sm font-semibold text-[#2D2D2D] mb-2 uppercase tracking-wider" style="font-family: 'MontserratAlternates-Bold';">Название товара</label>
                     <input type="text" id="name" name="name" required
@@ -115,7 +116,7 @@
                 </div>
 
                 <div class="flex justify-end space-x-4 pt-4">
-                    <a href="/admin/products" class="px-6 py-3 bg-[#F0E4CB] text-[#D5552E] rounded-lg font-semibold hover:bg-[#e5d5b8] transition-colors" style="font-family: 'MontserratAlternates-Bold';">Отмена</a>
+                    <a href="admin/products" class="px-6 py-3 bg-[#F0E4CB] text-[#D5552E] rounded-lg font-semibold hover:bg-[#e5d5b8] transition-colors" style="font-family: 'MontserratAlternates-Bold';">Отмена</a>
                     <button type="submit" class="px-6 py-3 bg-[#D5552E] text-white rounded-lg font-semibold hover:bg-[#b34425] transition-colors" style="font-family: 'MontserratAlternates-Bold';">Добавить товар</button>
                 </div>
             </form>

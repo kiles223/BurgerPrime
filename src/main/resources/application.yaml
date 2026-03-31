@@ -42,4 +42,6 @@ spring:
               - email
               - profile
 server:
+  servlet:
+    context-path: /burgerprime
   port: ${PORT:8080}

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Оставить отзыв</title>
-    <link rel="icon" href="/static/img/alt_logo 1.png">
+    <base href="${springMacroRequestContext.contextPath}/">
+    <link rel="icon" href="static/img/alt_logo 1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
@@ -34,13 +35,13 @@
 </head>
 <body>
     <header class="flex fixed justify-center items-center h-15 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
-        <a href="/profile"><img class="absolute top-[17px] left-[16px]" src="../static/img/reversed_arrow.png" alt=""></a>
+        <a href="profile"><img class="absolute top-[17px] left-[16px]" src="../static/img/reversed_arrow.png" alt=""></a>
         <img class="" src="/static/img/alt_logo 1.png">
-        <p class="text-[20px] text-white"><a href="/">BurgerPrime</a></p>
+        <p class="text-[20px] text-white"><a href="">BurgerPrime</a></p>
     </header>
     <main class="flex justify-center bg-[#FFF9EE] h-full min-h-screen w-full pt-15 pb-45">
         <div class="w-[361px] h-full">
-            <form action="/feedback" method="post">
+            <form action="feedback" method="post">
                 <p style="font-family: 'MontserratAlternates-Bold', sans-serif;" class="text-[32px] text-center text-[#D5552E] mt-[32px]">Оставьте отзыв</p>
                 <div class="relative w-full h-[200px]">
                     <textarea name="feedback" class="w-full h-full rounded-[16px] bg-white mt-[16px] p-[16px] pb-[50px] shadow-xl" placeholder="Напишите ваш отзыв"></textarea>
@@ -59,10 +60,10 @@
         <script src="../static/js/feedback.js"></script>
     </main>
     <div class="flex justify-around items-center w-full h-15 bg-[#F0E4CB] fixed bottom-0 rounded-t-[16px] shadow-xl">
-        <a href="/"><img src="/static/img/main.png" alt=""></a>
-        <a href="/menu"><img src="/static/img/menu.png" alt=""></a>
-        <a href="/basket"><img src="/static/img/basket.png" alt=""></a>
-        <a href="/profile"><img src="/static/img/profile_active.png" alt=""></a>
+        <a href=""><img src="/static/img/main.png" alt=""></a>
+        <a href="menu"><img src="/static/img/menu.png" alt=""></a>
+        <a href="basket"><img src="/static/img/basket.png" alt=""></a>
+        <a href="profile"><img src="/static/img/profile_active.png" alt=""></a>
     </div>
 </body>
 </html>
