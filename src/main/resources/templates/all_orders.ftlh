@@ -10,19 +10,19 @@
     <style>
         @font-face {
             font-family: 'MontserratAlternates-Bold';
-            src: url("../static/fonts/MontserratAlternates-Bold.ttf") format("truetype");
+            src: url("static/fonts/MontserratAlternates-Bold.ttf") format("truetype");
         }
         @font-face {
             font-family: 'MontserratAlternates-SemiBold';
-            src: url("../static/fonts/MontserratAlternates-SemiBold.ttf") format("truetype");
+            src: url("static/fonts/MontserratAlternates-SemiBold.ttf") format("truetype");
         }
         @font-face {
             font-family: 'Montserrat-Medium';
-            src: url("../static/fonts/Montserrat-Medium.ttf") format("truetype");
+            src: url("static/fonts/Montserrat-Medium.ttf") format("truetype");
         }
         @font-face {
             font-family: 'Montserrat-Bold';
-            src: url("../static/fonts/Montserrat-Bold.ttf") format("truetype");
+            src: url("static/fonts/Montserrat-Bold.ttf") format("truetype");
         }
         body {
             font-family: 'MontserratAlternates-SemiBold', sans-serif;
@@ -32,7 +32,7 @@
 <body>
     <header class=" fixed h-30 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
         <div class="flex justify-center items-center w-full h-15">
-            <img class="" src="/static/img/alt_logo 1.png">
+            <img class="" src="static/img/alt_logo 1.png">
             <p class="text-[20px] text-white"><a href="">Admin</a></p>
         </div>
         <div class="flex justify-center items-center mt-[24px] space-x-[64px] w-full h-15 bg-white">

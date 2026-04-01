@@ -10,23 +10,23 @@
         <style>
             @font-face {
                 font-family: 'MontserratAlternates-Bold';
-                src: url("../static/fonts/MontserratAlternates-Bold.ttf") format("truetype");
+                src: url("static/fonts/MontserratAlternates-Bold.ttf") format("truetype");
             }
             @font-face {
                 font-family: 'MontserratAlternates-SemiBold';
-                src: url("../static/fonts/MontserratAlternates-SemiBold.ttf") format("truetype");
+                src: url("static/fonts/MontserratAlternates-SemiBold.ttf") format("truetype");
             }
             @font-face {
                 font-family: 'MontserratAlternates-Medium';
-                src: url("../static/fonts/MontserratAlternates-Medium.ttf") format("truetype");
+                src: url("static/fonts/MontserratAlternates-Medium.ttf") format("truetype");
             }
             @font-face {
                 font-family: 'Montserrat-Medium';
-                src: url("../static/fonts/Montserrat-Medium.ttf") format("truetype");
+                src: url("static/fonts/Montserrat-Medium.ttf") format("truetype");
             }
             @font-face {
                 font-family: 'Montserrat-Bold';
-                src: url("../static/fonts/Montserrat-Bold.ttf") format("truetype");
+                src: url("static/fonts/Montserrat-Bold.ttf") format("truetype");
             }
             body {
                 font-family: 'MontserratAlternates-SemiBold', sans-serif;
@@ -112,7 +112,7 @@
     </head>
     <body>
         <header class="flex fixed justify-center items-center h-15 w-full bg-[#D5552E] pt-2 pb-2 space-x-1 rounded-b-[24px] shadow-xl">
-            <img class="" src="/static/img/alt_logo 1.png">
+            <img class="" src="static/img/alt_logo 1.png">
             <p class="text-[20px] text-white"><a href="">BurgerPrime</a></p>
         </header>
         <main class="flex justify-center bg-[#FFF9EE] h-full min-h-screen w-full pt-15 pb-45">
@@ -126,18 +126,18 @@
                             <p style="font-family: 'Montserrat-Medium';">Введите адрес</p>
                         </#if>
                     </div>
-                    <img src="../static/img/arrow.png" alt="">
+                    <img src="static/img/arrow.png" alt="">
                 </div>
                 <div id="products" class="w-full h-full mt-[32px] space-y-[32px]">
                     <#list products as product>
                         <div data-product-cost="${(product.price * (1-(discount?double/100.0)))?int}" data-product-id="${product.id}" class="flex items-start product-item justify-start h-[148px] bg-[#F0E4CB] rounded-[24px] shadow-2xl px-[16px] py-[16px] pb-[16px] space-x-[16px]">
-                            <img class="h-[120px]" src="/images/${product.previewImageId}" alt="">
+                            <img class="h-[120px]" src="images/${product.previewImageId}" alt="">
                             <div class="space-y-[8px] w-full">
                                 <p style="font-family: 'MontserratAlternates-Bold';" class="text-[#D5552E] text-[19px]">${product.name}</p>
                                 <div class="flex justify-around items-center -ml-3 mt-3 space-x-[10px] w-[103px]">
-                                    <img class="minus_button h-[40px]" src="../static/img/minus.png" alt="">
+                                    <img class="minus_button h-[40px]" src="static/img/minus.png" alt="">
                                     <p class="count text-[24px] mb-1">1</p>
-                                    <img class="plus_button h-[40px] mr-7" src="../static/img/plus.png" alt="">
+                                    <img class="plus_button h-[40px] mr-7" src="static/img/plus.png" alt="">
                                 </div>
                                 <div class="flex w-full space-x-[4px]">
                                     <p style="font-family: 'MontserratAlternates-Bold';" class="cost text-[#1D342C] text-[19px] -mt-1">${(product.price * (1-(discount?double/100.0)))?int} руб.</p>
@@ -147,7 +147,7 @@
                         <#else>
                             <p style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#D5552E] text-center mt-[32px]">Корзина пуста</p>
                     </#list>
-                    <script src="../static/js/basket_counter.js"></script>
+                    <script src="static/js/basket_counter.js"></script>
                     <div class="flex justify-between items-center px-[16px] h-[76px] rounded-[24px] bg-[#F0E4CB] fixed bottom-[76px] w-[361px]">
                         <p id="final_cost" style="font-family: 'MontserratAlternates-Bold';" class="text-[24px] text-[#1D342C]">${(sum* (1-(discount?double/100.0)))?int} руб.</p>
                         <#if accountInformation.address??>
@@ -156,7 +156,7 @@
                             <button id="fake_order_button" class="bg-[#1D342C] w-[126px] h-[46px] text-white rounded-[8px] text-[18px]">Заказать</button>
                         </#if>
                     </div>
-                    <script src="../static/js/basket_createorder.js"></script>
+                    <script src="static/js/basket_createorder.js"></script>
                 </div>
             </div>
         </main>
@@ -169,7 +169,7 @@
                         <input name="address" style="font-family: 'Montserrat-Medium';" id="searchInput" type="text" class="w-full h-[30px] bg-white pl-[16px] rounded-[8px] shadow-xl" placeholder="Введите адрес">
                     </div>
                     <div id="results"></div>
-                    <script src="../static/js/address_search.js"></script>
+                    <script src="static/js/address_search.js"></script>
                     <div class="flex justify-end mt-[16px]">
                         <button type="submit" style="font-family: 'Montserrat-Bold';" class="bg-[#1D342C] w-full h-[30px] text-center text-white rounded-[8px] shadow-xl mb-[16px]">Сохранить</button>
                     </div>
@@ -177,12 +177,12 @@
                 </div>
             </div>
         </div>
-        <script src="../static/js/basket_address.js"></script>
+        <script src="static/js/basket_address.js"></script>
         <div class="flex justify-around items-center w-full h-15 bg-[#F0E4CB] fixed bottom-0 rounded-t-[16px] shadow-xl">
-            <a href=""><img src="/static/img/main.png" alt=""></a>
-            <a href="menu"><img src="/static/img/menu.png" alt=""></a>
-            <a href="basket"><img src="/static/img/basket_active.png" alt=""></a>
-            <a href="profile"><img src="/static/img/profile.png" alt=""></a>
+            <a href=""><img src="static/img/main.png" alt=""></a>
+            <a href="menu"><img src="static/img/menu.png" alt=""></a>
+            <a href="basket"><img src="static/img/basket_active.png" alt=""></a>
+            <a href="profile"><img src="static/img/profile.png" alt=""></a>
         </div>
     </body>
 </html>
