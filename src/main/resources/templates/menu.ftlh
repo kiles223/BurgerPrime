@@ -101,7 +101,7 @@
                 <p id="snacks" style="font-family: 'MontserratAlternates-Bold';" class="text-[32px] text-[#D5552E] scroll-mt-31">Снеки</p>
                 <div class="grid grid-col-1 w-full mt-[16px]">
                     <#list products as product>
-                        <#if product.category == "Снеки">
+                        <#if product.category == "Снек">
                     <div class="w-[361px] mx-auto h-[413px] bg-[#F0E4CB] rounded-[24px] shadow-xl mb-[32px]">
                         <img class="mx-auto my-[16px]" src="images/${product.previewImageId}">
                         <p style="font-family: 'MontserratAlternates-Bold';" class="text-center text-[#D5552E] text-[32px] mb-[16px]">${product.name}</p>
