@@ -44,7 +44,7 @@
                     <div class="flex justify-center w-full">
                         <div class="flex justify-center items-center mt-[64px] bg-grey-300 h-[130px] w-[130px] rounded-[50%] overflow-hidden">
                             <#if accountInformation.avatar??>
-                                <button class="bg-white flex justify-center items-center cursor-pointer overflow-hidden h-full w-full" id="add-avatar"><img class="" src=images/${accountInformation.avatar.id}"></button>
+                                <button class="bg-white flex justify-center items-center cursor-pointer overflow-hidden h-full w-full" id="add-avatar"><img class="" src="images/${accountInformation.avatar.id}"></button>
                             <#else>
                                 <button class="bg-white justify-center items-center cursor-pointer overflow-hidden h-full w-full" id="add-avatar"></button>
                             </#if>
