@@ -10,8 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class SpringConfiguration implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/burgerprime/static/**")
-                .addResourceLocations("classpath:/burgerprime/static/");
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("/home/akruchinin/burgerprime/BurgerPrime/src/main/resources/static/");
     }
     @Bean
     public RestTemplate restTemplate() {
