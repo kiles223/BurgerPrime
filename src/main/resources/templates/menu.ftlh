@@ -36,10 +36,10 @@
                 <p class="text-[20px] text-white"><a href="">BurgerPrime</a></p>
             </div>
             <div id="header_nav" class="flex my-[16px] space-x-[16px] mx-[16px] overflow-auto">
-                <a href="#burgers" style="font-family: 'MontserratAlternates-Bold'; background-color: #D5552E; color: #ffffff" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Бургеры</a>
-                <a href="#drinks" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Напитки</a>
-                <a href="#snacks" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Cнеки</a>
-                <a href="#souses" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Соусы</a>
+                <a href="menu#burgers" style="font-family: 'MontserratAlternates-Bold'; background-color: #D5552E; color: #ffffff" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Бургеры</a>
+                <a href="menu#drinks" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Напитки</a>
+                <a href="menu#snacks" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Cнеки</a>
+                <a href="menu#souses" style="font-family: 'MontserratAlternates-Bold';" class="bg-[#F0E4CB] text-[#D5552E] px-[16px] py-[4px] rounded-[4px] text-[18px] shadow-lg">Соусы</a>
             </div>
             <script src="static/js/menu_nav_panel.js"></script>
         </header>
