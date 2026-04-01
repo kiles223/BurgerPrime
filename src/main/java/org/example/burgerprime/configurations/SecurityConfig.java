@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/registration","/","/menu",
-                                "burgerprime/static/**",
+                                "/burgerprime/static/**",
                                 "/images/**",
                                 "/api/**"
                         ).permitAll()
